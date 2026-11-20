@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title><span class="nb">GUNARA&nbsp;—&nbsp;Brand</span> Guideline</title>
+<style>
+@font-face { font-family: 'Sora'; font-weight: 400; font-style: normal; src: url('fonts/Sora-400.ttf') format('truetype'); font-display: swap; }
+@font-face { font-family: 'Sora'; font-weight: 600; font-style: normal; src: url('fonts/Sora-600.ttf') format('truetype'); font-display: swap; }
+@font-face { font-family: 'Sora'; font-weight: 700; font-style: normal; src: url('fonts/Sora-700.ttf') format('truetype'); font-display: swap; }
+@font-face { font-family: 'Sora'; font-weight: 800; font-style: normal; src: url('fonts/Sora-800.ttf') format('truetype'); font-display: swap; }
+@font-face { font-family: 'Manrope'; font-weight: 400; font-style: normal; src: url('fonts/Manrope-400.ttf') format('truetype'); font-display: swap; }
+@font-face { font-family: 'Manrope'; font-weight: 500; font-style: normal; src: url('fonts/Manrope-500.ttf') format('truetype'); font-display: swap; }
+@font-face { font-family: 'Manrope'; font-weight: 600; font-style: normal; src: url('fonts/Manrope-600.ttf') format('truetype'); font-display: swap; }
+@font-face { font-family: 'Manrope'; font-weight: 700; font-style: normal; src: url('fonts/Manrope-700.ttf') format('truetype'); font-display: swap; }
+@font-face { font-family: 'Manrope'; font-weight: 800; font-style: normal; src: url('fonts/Manrope-800.ttf') format('truetype'); font-display: swap; }
+</style>
+<style>
+@page {
+  size: 720px 1020px;
+  margin: 0;
+}
+:root {
+  --gn-abyss: #060D1F;
+  --gn-navy-900: #0A1628;
+  --gn-navy-800: #12233D;
+  --gn-navy-700: #1B3455;
+  --gn-navy-600: #254872;
+  --gn-navy-400: #5C87B8;
+  --gn-navy-mist: #A9BCD6;
+  --gn-snow: #F8FAFC;
+  --gn-amber-400: #FBBF24;
+  --gn-amber-500: #F59E0B;
+  --gn-amber-700: #B45309;
+  --gn-amber-tint: #FFF7E6;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 720px;
+  background: var(--gn-snow);
+  color: var(--gn-navy-900);
+  font-family: 'Manrope', sans-serif;
+  line-break: strict;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+@media screen {
+  html {
+    height: auto;
+    display: flex;
+    justify-content: center;
+    background: #1a2433;
+  }
+  body {
+    transform-origin: top center;
+    margin: 20px auto;
+    box-shadow: 0 20px 60px rgba(0,0,0,.5);
+  }
+}
+h1, h2, h3, h4 { font-family: 'Sora', sans-serif; letter-spacing: -0.01em; }
+p { line-break: strict; text-align: justify; }
+
+/* ---------- COVER ---------- */
+.cover {
+  width: 720px;
+  height: 1020px;
+  box-sizing: border-box;
+  break-after: page;
+  overflow: hidden;
+  position: relative;
+  background:
+    linear-gradient(rgba(92,135,184,0.10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(92,135,184,0.10) 1px, transparent 1px),
+    radial-gradient(ellipse 90% 60% at 70% 20%, rgba(37,72,114,0.55), transparent 65%),
+    var(--gn-abyss);
+  background-size: 44px 44px, 44px 44px, auto, auto;
+  color: #E6EEF8;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 64px;
+}
+.cover .grid-glow {
+  position: absolute; top: 0; right: 0;
+  width: 360px; height: 360px;
+  background: radial-gradient(circle, rgba(245,158,11,0.16), transparent 65%);
+}
+.cover .orbit {
+  position: absolute; right: 52px; top: 64px;
+  width: 220px; height: 220px;
+  border: 1px dashed rgba(92,135,184,0.45);
+  border-radius: 50%;
+}
+.cover .orbit::after {
+  content: ""; position: absolute; top: 14px; right: 34px;
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--gn-amber-500);
+}
+.cover .mark {
+  width: 64px; height: 64px; border-radius: 15px;
+  background: var(--gn-navy-900);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 34px;
+}
+.cover .tag {
+  font-family: 'Sora', sans-serif;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.34em; text-transform: uppercase;
+  color: var(--gn-amber-400);
+  margin-bottom: 20px;
+}
+.cover .title {
+  font-size: 66px; font-weight: 800; line-height: 1.04;
+  color: #F8FAFC;
+  margin: 0 0 8px 0;
+}
+.cover .title .amber { color: var(--gn-amber-500); }
+.cover .subtitle {
+  font-size: 16px; line-height: 1.65; color: var(--gn-navy-mist);
+  max-width: 460px; margin-top: 22px;
+  text-align: left;
+}
+.cover .formula {
+  display: flex; flex-wrap: wrap; gap: 7px; margin-top: 38px; max-width: 480px;
+}
+.cover .formula span {
+  font-family: 'Sora', sans-serif;
+  font-size: 11px; font-weight: 700;
+  background: rgba(245,158,11,0.13);
+  color: var(--gn-amber-400);
+  border-radius: 7px; padding: 6px 11px;
+}
+.cover .meta-row {
+  position: absolute; left: 64px; right: 64px; bottom: 56px;
+  display: flex; justify-content: space-between; align-items: flex-end;
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--gn-navy-400);
+}
+.cover .meta-row strong { color: #E6EEF8; font-weight: 700; letter-spacing: 0.16em; }
+
+/* ---------- FLOW CONTENT ---------- */
+.main-content {
+  background: var(--gn-snow);
+  padding: 58px 62px 46px 62px;
+  width: 720px; box-sizing: border-box;
+}
+.chapter-header {
+  break-after: avoid;
+  break-inside: avoid;
+  margin-top: 26px;
+}
+.chapter-header:first-child { margin-top: 0; }
+.section-tag {
+  font-family: 'Sora', sans-serif;
+  font-size: 10.5px; font-weight: 700;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--gn-amber-700);
+  margin-bottom: 10px;
+}
+.section-title {
+  font-size: 27px; font-weight: 800; color: var(--gn-navy-900);
+  line-height: 1.18; margin-bottom: 10px;
+}
+.nb { white-space: nowrap; }
+.section-title::after {
+  content: "";
+  display: block;
+  height: 3px; width: 56px;
+  background: var(--gn-amber-500);
+  border-radius: 2px;
+  margin-top: 12px; margin-bottom: 20px;
+}
+.body-text {
+  font-size: 13.5px; line-height: 1.72; color: #2A3B54;
+  margin-bottom: 12px;
+}
+.body-text strong { color: var(--gn-navy-900); font-weight: 700; }
+.lead {
+  font-size: 15px; line-height: 1.7; color: var(--gn-navy-900);
+  font-weight: 500; margin-bottom: 14px;
+}
+.quote {
+  break-inside: avoid;
+  border-left: 4px solid var(--gn-amber-500);
+  background: var(--gn-amber-tint);
+  border-radius: 0 12px 12px 0;
+  padding: 16px 20px;
+  margin: 14px 0;
+  font-family: 'Sora', sans-serif;
+  font-size: 15px; font-weight: 600; line-height: 1.55;
+  color: var(--gn-navy-900);
+}
+.quote small {
+  display: block; margin-top: 8px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.22em;
+  color: var(--gn-amber-700); text-transform: uppercase;
+}
+.card {
+  break-inside: avoid;
+  background: #FFFFFF;
+  border: 1px solid #DBE4EF;
+  border-radius: 14px;
+  padding: 18px 20px;
+  margin-bottom: 14px;
+}
+.card h4 {
+  font-size: 14.5px; font-weight: 700; color: var(--gn-navy-900);
+  margin: 0 0 6px 0;
+}
+.card p {
+  font-size: 12.5px; line-height: 1.66; color: #475569; margin: 0;
+}
+.card .chip {
+  display: inline-block;
+  font-family: 'Sora', sans-serif;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.2em;
+  background: var(--gn-amber-tint); color: var(--gn-amber-700);
+  border-radius: 99px; padding: 4px 11px; margin-bottom: 9px;
+}
+.two-col {
+  display: flex; flex-wrap: wrap; gap: 14px;
+  max-width: 100%;
+}
+.two-col .card { flex: 1 1 42%; min-width: 260px; max-width: 100%; margin-bottom: 0; }
+.two-col { margin-bottom: 14px; }
+
+/* Tables */
+table {
+  width: 100%; border-collapse: collapse;
+  font-size: 12px; margin: 6px 0 14px 0;
+  background: #FFFFFF;
+  border: 1px solid #DBE4EF;
+  border-radius: 12px;
+  overflow: hidden;
+}
+thead { display: table-header-group; }
+tr { break-inside: avoid; }
+th {
+  background: var(--gn-navy-900);
+  color: #E6EEF8;
+  font-family: 'Sora', sans-serif;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  text-align: left; padding: 10px 14px;
+}
+td {
+  padding: 9px 14px;
+  border-top: 1px solid #E8EEF6;
+  color: #2A3B54; line-height: 1.5;
+  vertical-align: middle;
+}
+td .mono { font-weight: 700; color: var(--gn-navy-900); letter-spacing: 0.04em; }
+.sw {
+  display: inline-block; width: 30px; height: 20px;
+  border-radius: 5px; border: 1px solid rgba(10,22,40,0.12);
+  vertical-align: middle;
+}
+.badge {
+  display: inline-block; font-family: 'Sora', sans-serif;
+  font-size: 10px; font-weight: 800; letter-spacing: 0.08em;
+  border-radius: 99px; padding: 3px 10px;
+}
+.badge.aaa { background: var(--gn-amber-500); color: var(--gn-navy-900); }
+.badge.aa { background: var(--gn-amber-tint); color: var(--gn-amber-700); border: 1px solid rgba(180,83,9,0.4); }
+
+/* Ratio callout */
+.ratio-callout {
+  break-inside: avoid;
+  display: flex; align-items: center; gap: 20px;
+  background: var(--gn-navy-900);
+  border-radius: 16px;
+  padding: 22px 26px;
+  margin: 16px 0;
+}
+.ratio-callout .big {
+  font-family: 'Sora', sans-serif;
+  font-size: 42px; font-weight: 800; color: var(--gn-amber-400);
+  white-space: nowrap; line-height: 1;
+}
+.ratio-callout .txt { font-size: 12.5px; line-height: 1.6; color: var(--gn-navy-mist); }
+.ratio-callout .txt strong { color: #F8FAFC; }
+
+/* Do / Don't */
+.rule-list { margin: 4px 0 14px 0; padding: 0; list-style: none; }
+.rule-list li {
+  break-inside: avoid;
+  position: relative;
+  padding: 8px 0 8px 30px;
+  font-size: 12.8px; line-height: 1.62; color: #2A3B54;
+  border-bottom: 1px dashed #DBE4EF;
+}
+.rule-list li:last-child { border-bottom: none; }
+.rule-list li::before {
+  position: absolute; left: 0; top: 8px;
+  font-family: 'Sora', sans-serif; font-weight: 800; font-size: 12px;
+}
+.rule-list.do li::before { content: "+"; color: var(--gn-amber-700); }
+.rule-list.dont li::before { content: "\00D7"; color: #9F1239; }
+.rule-list.num { counter-reset: rl; }
+.rule-list.num li { counter-increment: rl; padding-left: 34px; }
+.rule-list.num li::before { content: counter(rl, decimal-leading-zero); color: var(--gn-amber-700); }
+
+/* Type specimen */
+.specimen {
+  break-inside: avoid;
+  background: #FFFFFF; border: 1px solid #DBE4EF; border-radius: 14px;
+  padding: 20px 22px; margin-bottom: 14px;
+}
+.specimen .row {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 16px;
+  border-bottom: 1px solid #EEF3F9; padding: 9px 0;
+}
+.specimen .row:last-child { border-bottom: none; }
+.specimen .sample { font-family: 'Sora', sans-serif; font-weight: 800; color: var(--gn-navy-900); white-space: nowrap; }
+.specimen .meta { font-size: 10.5px; color: #64748B; text-align: right; line-height: 1.5; }
+
+/* Ending */
+.ending {
+  width: 720px; height: 1020px; box-sizing: border-box;
+  break-before: page;
+  overflow: hidden;
+  position: relative;
+  background:
+    linear-gradient(rgba(92,135,184,0.10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(92,135,184,0.10) 1px, transparent 1px),
+    radial-gradient(ellipse 80% 50% at 30% 75%, rgba(37,72,114,0.5), transparent 65%),
+    var(--gn-abyss);
+  background-size: 44px 44px, 44px 44px, auto, auto;
+  color: #E6EEF8;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  text-align: center;
+  padding: 64px;
+}
+.ending .mark {
+  width: 72px; height: 72px; border-radius: 17px;
+  background: var(--gn-navy-900);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 30px;
+}
+.ending .line {
+  font-family: 'Sora', sans-serif;
+  font-size: 30px; font-weight: 800; line-height: 1.3; color: #F8FAFC;
+  max-width: 480px;
+}
+.ending .line .amber { color: var(--gn-amber-500); }
+.ending .domains {
+  margin-top: 30px;
+  font-size: 11.5px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gn-navy-400); line-height: 2.1;
+}
+.ending .foot {
+  position: absolute; bottom: 56px; left: 64px; right: 64px;
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gn-navy-400);
+}
+</style>
+</head>
+<body>
+
+<!-- ============ COVER ============ -->
+<div class="cover">
+  <div class="grid-glow"></div>
+  <div class="orbit"></div>
+  <div class="mark">
+    <svg viewBox="0 0 48 48" width="40" height="40" aria-hidden="true">
+      <path d="M 33 12.6 A 14 14 0 1 0 37.9 26.6 L 24.6 26.6" fill="none" stroke="#F59E0B" stroke-width="4.6" stroke-linecap="round"/>
+      <circle cx="34.5" cy="34.5" r="2.6" fill="#FBBF24"/>
+    </svg>
+  </div>
+  <div class="tag">Brand Guideline · Edisi Midnight Blueprint</div>
+  <h1 class="title">GUNARA<br>Identitas Visual<br>&amp; Sistem Warna</h1>
+  <p class="subtitle">Dokumen induk identitas <span class="nb">gunara.web.id&nbsp;—&nbsp;strategi</span> merek personal, arsitektur ekosistem, palet Midnight Navy &amp; Amber, tipografi, dan aturan penerapan yang terukur untuk seluruh aset digital.</p>
+  <div class="formula">
+    <span>STRUKTUR SEBELUM KARYA</span><span>SATU OTAK · BANYAK ORGAN</span><span>WCAG 2.1 TERUKUR</span><span>UWA-7 READY</span>
+  </div>
+  <div class="meta-row">
+    <span><strong>gunara.web.id</strong> · Pusat Kendali Ekosistem</span>
+    <span>Edisi 2026 · V1.0</span>
+  </div>
+</div>
+
+<!-- ============ BODY ============ -->
+<div class="main-content">
+
+  <!-- 01 STRATEGI -->
+  <div class="chapter-header">
+    <div class="section-tag">01 · Strategi Merek</div>
+    <h2 class="section-title">Arsitek Sistem Peradaban Digital</h2>
+      </div>
+  <p class="lead">Gugun Gunara bukan sekadar konsultan yang memilih <span class="nb">warna&nbsp;—&nbsp;ia</span> arsitek yang merancang sistem tempat perusahaan, organisasi, dan peradaban digitalnya berjalan.</p>
+  <p class="body-text">Posisi merek Gunara berdiri di atas tiga doktrin intelektual yang ia lahirkan sendiri: <strong><span class="nb">UMEA™&nbsp;—&nbsp;Hukum</span> Minimum Usaha</strong> sebagai hukum organisasi, <strong>G-DOS</strong> sebagai sistem operasi digital pribadi, dan <strong>UWA-7</strong> sebagai arsitektur web tujuh lapis. Ketiganya menghasilkan satu tesis yang sama: kekuatan sebuah entitas ditentukan oleh fungsi kritis yang tetap hidup, bukan oleh kesan besar yang dipamerkan. Karena itu identitas Gunara harus terasa seperti blueprint <span class="nb">presisi&nbsp;—&nbsp;tenang</span>, terukur, dan <span class="nb">berwibawa&nbsp;—&nbsp;bukan</span> seperti iklan yang berteriak.</p>
+  <p class="body-text">Arsipemereki Gunara adalah perpaduan arketipe <strong>Sage</strong> (kebijaksanaan, pengetahuan, kebenaran terukur) dan <strong>Architect</strong> (struktur, sistem, eksekusi presisi). Perpaduan ini diterjemahkan langsung ke dalam bahasa visual: kanvas malam yang tenang, garis blueprint yang rapi, dan satu titik cahaya amber yang menuntun. Pesan intinya dinyatakan dalam dua kalimat kerja yang mengunci semua eksekusi merek.</p>
+  <div class="quote">"Struktur sebelum karya. Sistem sebelum skala."<small>Brand Tagline · Kalimat Kerja Utama</small></div>
+  <div class="two-col">
+    <div class="card"><span class="chip">ESSENSI</span><h4>Satu Otak, Banyak Organ</h4><p>gunara.web.id adalah pusat kendali; setiap domain adalah organ dengan satu fungsi spesifik di atas infrastruktur yang sama. Identitas personal menaungi seluruh ekosistem tanpa duplikasi.</p></div>
+    <div class="card"><span class="chip">JANJI MEREK</span><h4>Mulai dari Arsitektur, Bukan Tebakan</h4><p>Setiap <span class="nb">karya&nbsp;—&nbsp;dokumen</span>, website, <span class="nb">organisasi&nbsp;—&nbsp;lahir</span> dari sistem yang terbuka untuk diaudit: 165 dokumen Gunara OS, 6 tingkat organisasi UMEA, 7 lapis UWA-7.</p></div>
+  </div>
+
+  <!-- 02 EKOSISTEM -->
+  <div class="chapter-header">
+    <div class="section-tag">02 · Arsitektur Merek</div>
+    <h2 class="section-title">Satu Otak, Banyak Organ</h2>
+      </div>
+  <p class="body-text">Arsitektur merek Gunara mengikuti pola <strong>branded house</strong>: identitas personal Gunara menjadi payung otoritas, sementara setiap domain beroperasi sebagai entitas dengan fungsi, konten, dan SEO-nya sendiri. Pola ini mencegah dua penyakit umum kerajaan <span class="nb">digital&nbsp;—&nbsp;duplikasi</span> identitas antar domain, dan kekacauan pesan yang membuat audiens bingung harus masuk lewat pintu mana. Aturan mutlaknya: <strong>satu domain, satu fungsi kritis, satu sumber kebenaran</strong>.</p>
+  <table>
+    <thead><tr><th style="width:26%">Domain</th><th style="width:20%">Peran Organ</th><th style="width:42%">Fungsi dalam Ekosistem</th><th style="width:12%">Status</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">gunara.web.id</td><td>Pusat kendali</td><td>Personal hub: profil, metodologi, peta ekosistem, sistem identitas.</td><td>Aktif</td></tr>
+      <tr><td class="mono">digiman.id</td><td>Etalase produk</td><td>Gunara <span class="nb">OS&nbsp;—&nbsp;165</span> dokumen, 20 domain kepemimpinan, tier P0–P3.</td><td>Aktif</td></tr>
+      <tr><td class="mono">gconsultant.web.id</td><td>Konsultasi</td><td>Rumah metodologi <span class="nb">UMEA™&nbsp;—&nbsp;Hukum</span> Minimum Usaha™; asesmen organisasi.</td><td>Aktif</td></tr>
+      <tr><td class="mono">muhdin.id</td><td>Kelembagaan</td><td>MUHDIN <span class="nb">Indonesia&nbsp;—&nbsp;peran</span> Sekretaris Jenderal; ekosistem digital haji-umrah.</td><td>Aktif</td></tr>
+      <tr><td class="mono">pusatperizinan.com</td><td>Kepatuhan</td><td>Pintu masuk perizinan usaha sebelum naik ke arsitektur UMEA™.</td><td>Pembangunan</td></tr>
+      <tr><td class="mono">juraganwebsite.web.id</td><td>Pabrik web</td><td>Instansiasi UWA-7 untuk pasar website.</td><td>Pembangunan</td></tr>
+      <tr><td class="mono">topmanajemen.biz.id</td><td>Pelatihan</td><td>Kanal eksekutif untuk pelatihan dan kepemimpinan manajemen.</td><td>Pembangunan</td></tr>
+    </tbody>
+  </table>
+  <p class="body-text">Setiap organ menampilkan badge status yang sama seperti pada tabel di atas. Badge <strong>AKTIF</strong> hanya boleh dipakai untuk domain yang benar-benar beroperasi; domain dalam tahap konstruksi selalu diberi label <strong>PEMBANGUNAN</strong>&nbsp;—&nbsp;kejujuran arsitektural adalah bagian dari kode etik merek, karena satu-satunya produk yang dijanjikan Gunara adalah kebenaran yang terukur.</p>
+
+  <!-- 03 SISTEM WARNA -->
+  <div class="chapter-header">
+    <div class="section-tag">03 · Sistem Warna</div>
+    <h2 class="section-title">Midnight Navy &amp; Amber</h2>
+      </div>
+  <p class="lead">Gunara adalah arsitek yang bekerja di malam hari: kanvas Midnight Navy adalah ruang kerjanya, Amber adalah lampu mejanya.</p>
+  <p class="body-text">Secara semiotika, <strong>navy</strong> membawa makna kedalaman, intelijen, dan otoritas yang tidak perlu <span class="nb">berteriak&nbsp;—&nbsp;warna</span> yang sama yang dipakai institusi keuangan dan akademi untuk menyatakan kepercayaan. <strong>Amber</strong> dipilih sebagai satu-satunya aksen bukan karena indah, tetapi karena fungsinya: pada kanvas gelap, amber adalah frekuensi cahaya yang paling mudah ditangkap mata manusia sehingga selalu membaca sebagai "titik penting". Kombinasi ini menghasilkan hierarki visual yang <span class="nb">konsisten&nbsp;—&nbsp;gelap</span> menyimpan struktur, cahaya menunjukkan aksi.</p>
+  <p class="body-text">Aturan proporsi mengikuti pola <strong>60 · 30 · 10</strong>: 60% kanvas gelap/snow, 30% permukaan sekunder (kartu, garis, grid), 10% amber untuk aksi dan sorotan data. Amber dilarang menjadi latar area <span class="nb">besar&nbsp;—&nbsp;ia</span> adalah pena, bukan kertas.</p>
+  <table>
+    <thead><tr><th style="width:8%">Swatch</th><th style="width:24%">Nama</th><th style="width:16%">Hex</th><th style="width:52%">Peran &amp; Aturan Pakai</th></tr></thead>
+    <tbody>
+      <tr><td><span class="sw" style="background:#060D1F"></span></td><td>Midnight Abyss</td><td class="mono">#060D1F</td><td>Kanvas utama mode gelap; latar cover dan CTA.</td></tr>
+      <tr><td><span class="sw" style="background:#0A1628"></span></td><td>Midnight Navy</td><td class="mono">#0A1628</td><td>Warna merek inti; permukaan kartu gelap; tombol mode terang.</td></tr>
+      <tr><td><span class="sw" style="background:#12233D"></span></td><td>Navy 800</td><td class="mono">#12233D</td><td>Permukaan kartu pada kanvas gelap; pemisah halus.</td></tr>
+      <tr><td><span class="sw" style="background:#5C87B8"></span></td><td>Navy 400</td><td class="mono">#5C87B8</td><td>Garis blueprint, ornamen data, aksen sekunder non-teks.</td></tr>
+      <tr><td><span class="sw" style="background:#A9BCD6"></span></td><td>Navy Mist</td><td class="mono">#A9BCD6</td><td>Teks sekunder pada kanvas gelap.</td></tr>
+      <tr><td><span class="sw" style="background:#F8FAFC"></span></td><td>Snow Mist</td><td class="mono">#F8FAFC</td><td>Kanvas utama mode terang; teks pada kanvas gelap.</td></tr>
+      <tr><td><span class="sw" style="background:#F59E0B"></span></td><td>Amber 500</td><td class="mono">#F59E0B</td><td>Warna aksi utama: tombol, tautan kunci, sorotan data.</td></tr>
+      <tr><td><span class="sw" style="background:#FBBF24"></span></td><td>Amber 400</td><td class="mono">#FBBF24</td><td>Highlight pada kanvas gelap: kicker, formula, angka statistik.</td></tr>
+      <tr><td><span class="sw" style="background:#B45309"></span></td><td>Amber 700</td><td class="mono">#B45309</td><td>Aksen teks pada mode terang (amber terang gagal kontras di atas putih).</td></tr>
+      <tr><td><span class="sw" style="background:#FFF7E6"></span></td><td>Amber Tint</td><td class="mono">#FFF7E6</td><td>Chip, kutipan, dan latar nuansa hangat pada mode terang.</td></tr>
+    </tbody>
+  </table>
+  <div class="ratio-callout">
+    <div class="big">9,01 : 1</div>
+    <div class="txt"><strong>Rasio kontras pasangan tanda tangan</strong>&nbsp;—&nbsp;Amber 500 di atas Midnight Abyss, diuji dengan perhitungan luminans WCAG 2.1 dan dinyatakan <strong>AAA</strong>. Identitas Gunara tidak meminta Anda percaya bahwa sistemnya aksesibel; ia menunjukkan angkanya.</div>
+  </div>
+
+  <!-- 04 KONTRAS -->
+  <div class="chapter-header">
+    <div class="section-tag">04 · Aksesibilitas</div>
+    <h2 class="section-title">Kontras yang Layak Dipublikasikan</h2>
+      </div>
+  <p class="body-text">Setiap pasangan warna yang boleh dipakai dalam produk digital Gunara wajib melewati pengujian rasio kontras <strong>WCAG 2.1</strong>. Tabel di bawah adalah hasil perhitungan nyata (skrip audit tersimpan di repositori, bukan angka dekoratif). Prinsipnya sederhana: <strong>teks yang penting AAA, teks pendukung minimal AA, dan pasangan yang gagal dilarang dipublikasikan</strong>. Khusus mode terang, aksen teks wajib naik ke Amber 700 atau <span class="nb">800&nbsp;—&nbsp;amber</span> terang di atas putih hanya boleh dipakai untuk elemen dekoratif besar, bukan teks.</p>
+  <table>
+    <thead><tr><th style="width:38%">Pasangan</th><th style="width:14%">Rasio</th><th style="width:14%">Level</th><th style="width:34%">Aturan Penggunaan</th></tr></thead>
+    <tbody>
+      <tr><td>Amber 500 di atas Midnight Abyss</td><td class="mono">9,01:1</td><td><span class="badge aaa">AAA</span></td><td>CTA utama mode gelap; aksi prioritas.</td></tr>
+      <tr><td>Amber 400 di atas Midnight Abyss</td><td class="mono">11,59:1</td><td><span class="badge aaa">AAA</span></td><td>Kicker, formula DNA, angka statistik.</td></tr>
+      <tr><td>Navy 900 di atas Amber 500</td><td class="mono">8,44:1</td><td><span class="badge aaa">AAA</span></td><td>Teks pada tombol amber mode gelap.</td></tr>
+      <tr><td>Putih di atas Navy 900</td><td class="mono">18,13:1</td><td><span class="badge aaa">AAA</span></td><td>Tombol utama mode terang.</td></tr>
+      <tr><td>Navy 900 di atas Snow Mist</td><td class="mono">17,33:1</td><td><span class="badge aaa">AAA</span></td><td>Body text mode terang.</td></tr>
+      <tr><td>Mist di atas Midnight Abyss</td><td class="mono">16,54:1</td><td><span class="badge aaa">AAA</span></td><td>Body text mode gelap.</td></tr>
+      <tr><td>Navy Mist di atas Midnight Abyss</td><td class="mono">10,00:1</td><td><span class="badge aaa">AAA</span></td><td>Teks sekunder mode gelap.</td></tr>
+      <tr><td>Amber 800 di atas Amber Tint</td><td class="mono">6,65:1</td><td><span class="badge aa">AA</span></td><td>Chip dan kutipan mode terang.</td></tr>
+      <tr><td>Amber 700 di atas Snow Mist</td><td class="mono">4,80:1</td><td><span class="badge aa">AA</span></td><td>Aksen teks kecil mode terang.</td></tr>
+    </tbody>
+  </table>
+
+  <!-- 05 TIPOGRAFI -->
+  <div class="chapter-header">
+    <div class="section-tag">05 · Tipografi</div>
+    <h2 class="section-title">Sora &amp; <span class="nb">Manrope&nbsp;—&nbsp;Arsitek</span> dengan Penggaris</h2>
+      </div>
+  <p class="body-text">Dua keluarga huruf, dua peran yang tidak boleh bertukar. <strong>Sora</strong>&nbsp;—&nbsp;geometris, tegap, dengan sudut yang hampir <span class="nb">konstruktif&nbsp;—&nbsp;menjadi</span> suara judul: ia berbicara seperti orang yang menggambar denah. <strong>Manrope</strong>&nbsp;—&nbsp;humanis-geometris yang <span class="nb">hangat&nbsp;—&nbsp;menjadi</span> suara isi: ia menjelaskan sistem yang rumit tanpa membuat pembaca lelah. Untuk token, kode warna, dan label teknis, gunakan <strong>Manrope SemiBold dengan letter-spacing lebar</strong> (bukan keluarga ketiga) agar batas dua-awalan tipografi tetap terjaga.</p>
+  <div class="specimen">
+    <div class="row"><span class="sample" style="font-size:34px">Gunara</span><span class="meta">Display / H1 · Sora 800<br>60px · leading 1.08</span></div>
+    <div class="row"><span class="sample" style="font-size:24px">Gunara</span><span class="meta">Judul Seksi / H2 · Sora 800<br>36px · leading 1.18</span></div>
+    <div class="row"><span class="sample" style="font-size:16px">Gunara</span><span class="meta">Judul Kartu / H3 · Sora 700<br>20px · leading 1.3</span></div>
+    <div class="row"><span class="sample" style="font-family:Manrope,sans-serif;font-weight:400;font-size:14px">Gunara adalah pusat kendali ekosistem.</span><span class="meta">Body · Manrope 400<br>16px · leading 1.7</span></div>
+    <div class="row"><span class="sample" style="font-family:Manrope,sans-serif;font-weight:700;font-size:11px;letter-spacing:0.3em;color:#B45309">STRUKTUR SEBELUM KARYA</span><span class="meta">Kicker / Token · Manrope 700<br>12px · tracking 0.3em · uppercase</span></div>
+  </div>
+  <ul class="rule-list dont">
+    <li>Jangan meregangkan, memiringkan, atau mengecilkan huruf di luar skala yang <span class="nb">ditetapkan&nbsp;—&nbsp;hierarki</span> adalah sistem, bukan selera.</li>
+    <li>Jangan memakai Sora untuk paragraf panjang: geometri yang tegap melelahkan mata ketika barisnya bertumpuk.</li>
+    <li>Jangan mencampur keluarga huruf ketiga ke dalam aset merek tanpa revisi dokumen ini.</li>
+  </ul>
+
+  <!-- 06 SISTEM VISUAL -->
+  <div class="chapter-header">
+    <div class="section-tag">06 · Sistem Visual</div>
+    <h2 class="section-title">Monogram, Blueprint, dan Komponen</h2>
+      </div>
+  <p class="body-text">Monogram Gunara dibangun dari satu geometri: lengkung huruf <strong>G</strong> yang diakhiri palang horizontal tegas, ditutup satu titik amber di kuadran bawah sebagai "kompas". Monogram selalu berdiri di atas kartu Midnight Navy dengan sudut membulat 15px, dan minimal memiliki ruang kosong selebar 25% dari lebar mark di setiap sisinya. Versi satu warna diperbolehkan: seluruh lengkung menjadi Snow Mist di atas kanvas gelap, atau Navy 900 di atas Snow <span class="nb">Mist&nbsp;—&nbsp;tetapi</span> palang dan titik tidak boleh hilang karena keduanya adalah tanda tangan komposisi.</p>
+  <p class="body-text">Tiga komponen dekoratif membentuk karakter visual dan dilarang digandakan lebih dari batas ini dalam satu halaman: <strong>grid blueprint</strong> (garis 44px, opasitas rendah, memudar ke tepi), <strong>orbit halus</strong> (lingkaran putus-putus dengan satu titik amber), dan <strong>status dot</strong> (titik amber dengan denyut cincin). Komponen keempat&nbsp;—&nbsp;<strong>chip formula DNA</strong> V→K→A→D→P→S→M→L→E&nbsp;—&nbsp;adalah perangkat naratif, dipakai ketika dokumen menjelaskan alur berpikir dari visi menuju evolusi.</p>
+  <div class="two-col">
+    <div class="card"><span class="chip">DILAKUKAN</span><h4>Restraint sebagai Standar</h4><p>Maksimal 3 elemen dekoratif per halaman. Radius seragam 12–16px. Garis pemisah tipis 1px Navy di opasitas rendah. Ruang kosang dibiarkan <span class="nb">bernapas&nbsp;—&nbsp;void</span> adalah bagian dari kemewahan midnight.</p></div>
+    <div class="card"><span class="chip">DILARANG</span><h4>Keramaian yang Membunuh Otoritas</h4><p>Tanpa gradien pelangi, tanpa bayangan keras, tanpa emoji di aset formal, tanpa foto stok sebagai dekorasi, dan tanpa menumpuk lebih dari satu glow amber dalam satu pandangan.</p></div>
+  </div>
+
+  <!-- 07 PENERAPAN -->
+  <div class="chapter-header">
+    <div class="section-tag">07 · Penerapan Digital</div>
+    <h2 class="section-title">Dari Token Menuju Perangkat</h2>
+      </div>
+  <p class="body-text">Seluruh keputusan visual dikodekan sebagai <strong>design token</strong> pada lapisan CSS variabel (misalnya <strong>--gn-navy-900: #0A1628</strong> dan <strong>--gn-amber-500: #F59E0B</strong>), sehingga setiap aset <span class="nb">baru&nbsp;—&nbsp;landing</span> page, proposal, dokumen <span class="nb">pelatihan&nbsp;—&nbsp;mewarisi</span> identitas yang sama tanpa menebak dari desain lama. Mode gelap adalah identitas default; mode terang hadir sebagai varian kerja siang hari dengan Snow Mist sebagai kanvas dan Navy 900 sebagai tinta.</p>
+  <ul class="rule-list num">
+    <li>CTA utama selalu Amber 500 dengan teks Navy 900 pada kanvas gelap; pada mode terang, CTA utama menjadi Navy 900 dengan teks Snow Mist.</li>
+    <li>Setiap section memakai kicker token (uppercase, tracking 0.3em) sebelum <span class="nb">judul&nbsp;—&nbsp;tanpa</span> pengecualian, agar ritme dokumen selalu terdengar.</li>
+    <li>Data penting (angka statistik, rasio kontras, hasil pengujian) selalu diwarnai Amber pada kanvas gelap dan Navy 900 Bold pada kanvas terang.</li>
+    <li>Struktur halaman mengikuti UWA-7: HTML semantik, heading logis, JSON-LD Person untuk entitas Gunara, dan target kontras yang sudah dinyatakan pada bagian 04.</li>
+    <li>Setiap aset baru wajib menyebut status aktual domain (Aktif / Pembangunan)&nbsp;—&nbsp;identitas Gunara tidak menjual sesuatu yang belum hidup.</li>
+  </ul>
+  <div class="quote">"Bangun aset yang dipahami manusia, dibaca mesin, dimaknai entitas, ditemukan crawler, dipercaya sistem, dicintai <span class="nb">pengguna&nbsp;—&nbsp;dan</span> terus berevolusi."<small>Adaptasi Doktrin UWA-7 untuk Identitas Merek</small></div>
+
+  <!-- 08 GOVERNANCE -->
+  <div class="chapter-header">
+    <div class="section-tag">08 · Tata Kelola</div>
+    <h2 class="section-title">Satu Sumber Kebenaran Identitas</h2>
+      </div>
+  <p class="body-text">Dokumen ini adalah satu-satunya sumber kebenaran identitas Gunara. Setiap <span class="nb">perubahan&nbsp;—&nbsp;penambahan</span> warna, perubahan skala huruf, revisi <span class="nb">monogram&nbsp;—&nbsp;wajib</span> dicatat sebagai revisi bernomor pada halaman sampul, disertai alasan dan hasil pengujian kontras terbaru. Asel turunan (slide, banner, proposal) boleh memakai token yang sudah didefinisikan; aset turunan yang menambah token baru dianggap cabang liar dan wajib disatukan kembali.</p>
+  <div class="two-col">
+    <div class="card"><span class="chip">SIKLUS PENJAGAAN</span><h4>Audit Berkala</h4><p>Periksa ulang rasio kontras setiap kali token berubah; audit halaman utama gunara.web.id setiap kuartal; arsipkan keputusan desain di repositori sebagai decision record yang bisa diaudit.</p></div>
+    <div class="card"><span class="chip">PEMILIK</span><h4>Kepemilikan Merek</h4><p>UMEA™, Gunara OS, G-DOS, dan UWA-7 adalah karya intelektual Gugun Gunara. Identitas <span class="nb">Gunara&nbsp;—&nbsp;nama</span>, monogram, palet Midnight <span class="nb">Blueprint&nbsp;—&nbsp;melekat</span> pada kepemilikan yang sama dan tidak dapat dipakai tanpa izin tertulis.</p></div>
+  </div>
+
+</div>
+
+<!-- ============ ENDING ============ -->
+<div class="ending">
+  <div class="mark">
+    <svg viewBox="0 0 48 48" width="44" height="44" aria-hidden="true">
+      <path d="M 33 12.6 A 14 14 0 1 0 37.9 26.6 L 24.6 26.6" fill="none" stroke="#F59E0B" stroke-width="4.6" stroke-linecap="round"/>
+      <circle cx="34.5" cy="34.5" r="2.6" fill="#FBBF24"/>
+    </svg>
+  </div>
+  <div class="line">Struktur sebelum karya.<br>Sistem sebelum skala.<br><span class="amber">Satu otak, banyak organ.</span></div>
+  <div class="domains">
+    gunara.web.id · digiman.id · gconsultant.web.id<br>pusatperizinan.com · muhdin.id
+  </div>
+  <div class="foot">Gunara Brand Guideline · Edisi Midnight Blueprint · 2026</div>
+</div>
+
+</body>
+</html>
