@@ -1,0 +1,107 @@
+[
+  {
+    "fg": "#F59E0B",
+    "bg": "#060D1F",
+    "context": "Amber 500 di atas Midnight Abyss (dark bg)",
+    "ratio": 9.01,
+    "level": "AAA"
+  },
+  {
+    "fg": "#FBBF24",
+    "bg": "#060D1F",
+    "context": "Amber 400 di atas Midnight Abyss",
+    "ratio": 11.59,
+    "level": "AAA"
+  },
+  {
+    "fg": "#FCD34D",
+    "bg": "#060D1F",
+    "context": "Amber 300 di atas Midnight Abyss",
+    "ratio": 13.42,
+    "level": "AAA"
+  },
+  {
+    "fg": "#0A1628",
+    "bg": "#F59E0B",
+    "context": "Midnight Navy 900 di atas Amber 500 (tombol dark-mode)",
+    "ratio": 8.44,
+    "level": "AAA"
+  },
+  {
+    "fg": "#060D1F",
+    "bg": "#FBBF24",
+    "context": "Abyss di atas Amber 400 (tombol dark-mode)",
+    "ratio": 11.59,
+    "level": "AAA"
+  },
+  {
+    "fg": "#FFFFFF",
+    "bg": "#0A1628",
+    "context": "Putih di atas Midnight Navy 900 (tombol light-mode)",
+    "ratio": 18.13,
+    "level": "AAA"
+  },
+  {
+    "fg": "#0A1628",
+    "bg": "#F8FAFC",
+    "context": "Midnight Navy 900 di atas Snow Mist",
+    "ratio": 17.33,
+    "level": "AAA"
+  },
+  {
+    "fg": "#475569",
+    "bg": "#F8FAFC",
+    "context": "Slate Muted di atas Snow Mist (teks sekunder light)",
+    "ratio": 7.24,
+    "level": "AAA"
+  },
+  {
+    "fg": "#92400E",
+    "bg": "#FFF7E6",
+    "context": "Amber 800 di atas Amber Tint (chip light)",
+    "ratio": 6.65,
+    "level": "AA"
+  },
+  {
+    "fg": "#E6EEF8",
+    "bg": "#060D1F",
+    "context": "Mist Foreground di atas Midnight Abyss",
+    "ratio": 16.54,
+    "level": "AAA"
+  },
+  {
+    "fg": "#A9BCD6",
+    "bg": "#060D1F",
+    "context": "Navy 300 Muted di atas Midnight Abyss (teks sekunder dark)",
+    "ratio": 10.0,
+    "level": "AAA"
+  },
+  {
+    "fg": "#B45309",
+    "bg": "#F8FAFC",
+    "context": "Amber 700 di atas Snow Mist (aksen teks light)",
+    "ratio": 4.8,
+    "level": "AA"
+  },
+  {
+    "fg": "#F59E0B",
+    "bg": "#0A1628",
+    "context": "Amber 500 di atas Midnight Navy 900",
+    "ratio": 8.44,
+    "level": "AAA"
+  },
+  {
+    "fg": "#5C87B8",
+    "bg": "#060D1F",
+    "context": "Navy 400 di atas Midnight Abyss",
+    "ratio": 5.17,
+    "level": "AA"
+  },
+  {
+    "fg": "#12233D",
+    "bg": "#F8FAFC",
+    "context": "Navy 800 di atas Snow Mist",
+    "ratio": 15.05,
+    "level": "AAA"
+  }
+]

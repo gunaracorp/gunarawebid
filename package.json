@@ -1,10 +1,25 @@
 {
-  "name": "nextjs_tailwind_shadcn_ts",
-  "version": "0.2.1",
+  "name": "gunarawebid",
+  "version": "1.0.0",
   "private": true,
+  "description": "Personal command center Gugun Gunara — metodologi UMEA, G-DOS, UWA-7, ekosistem domain, dan sistem identitas Gunara.",
+  "author": "Gugun Gunara <gunara@digiman.id>",
+  "license": "MIT",
+  "homepage": "https://gunara.web.id",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gunaracorp/gunarawebid.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gunaracorp/gunarawebid/issues"
+  },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "next dev -p 3000 2>&1 | tee dev.log",
     "build": "next build && cp -r .next/static .next/standalone/.next/ && cp -r public .next/standalone/",
+    "contrast": "python3 tools/contrast.py",
     "start": "NODE_ENV=production bun .next/standalone/server.js 2>&1 | tee server.log",
     "lint": "eslint .",
     "db:push": "prisma db push --accept-data-loss",
