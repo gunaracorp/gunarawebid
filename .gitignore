@@ -60,3 +60,7 @@ server.log
 local-*
 test
 prompt
+
+# artefak build PDF lokal (final deliverable sudah di docs/roadmap/)
+/scripts/roadmap_body.pdf
+/scripts/roadmap_cover.pdf

@@ -19,6 +19,8 @@
 [![WCAG AAA](https://img.shields.io/badge/WCAG-AAA_9.01%3A1-F59E0B?style=for-the-badge&logo=webaccessibilityinitiative&logoColor=0A1628)](#-sistem-warna-tersertifikasi)
 [![License MIT](https://img.shields.io/badge/License-MIT-F59E0B?style=for-the-badge&logo=opensourceinitiative&logoColor=0A1628)](LICENSE)
 [![Status](https://img.shields.io/badge/Status-Produksi-F59E0B?style=for-the-badge&logo=statuspage&logoColor=0A1628)](https://gunara.web.id)
+[![Versi](https://img.shields.io/badge/VERSI_v1.0.0.0-BASELINE-F59E0B?style=for-the-badge)](VERSIONING.md)
+[![Roadmap 99 Hari](https://img.shields.io/badge/ROADMAP-99_HARI_10_FASE-0A1628?style=for-the-badge&labelColor=060D1F)](ROADMAP.md)
 [![Kunjungan](https://komarev.com/ghpvc/?username=gunaracorp&label=PENGUNJUNG&color=F59E0B&style=for-the-badge)](https://github.com/gunaracorp/gunarawebid)
 
 <br/>
@@ -284,16 +286,55 @@ Rekomendasi mengikuti lapisan **Otoritas** pada UWA-7:
 
 <!-- ══════════════════════ ROADMAP ══════════════════════ -->
 
-## Roadmap
+## Roadmap 99 Hari — v1.0.0.0 → v2.0.0.0
+
+Peta jalan upgrade 99 hari (21 Nov 2026 – 27 Feb 2027) dalam 10 fase mengikuti lapisan UWA-7.
+Satu hari = satu roadmap = satu commit = satu entri worklog = satu kenaikan versi.
+
+| Dokumen Tata Kelola | Fungsi |
+| :--- | :--- |
+| [ROADMAP.md](ROADMAP.md) | Checklist 99 hari — 10 fase, 46 perspektif dewan pakar, target versi per hari |
+| [WORKLOG.md](WORKLOG.md) | Log eksekusi harian: hasil, bukti, versi |
+| [VERSIONING.md](VERSIONING.md) | Skema versi `MAJOR.MINOR.PATCH.BUILD` Gunara OS |
+| [Roadmap PDF](docs/roadmap/gunara-os-roadmap-99-hari.pdf) | Dokumen desain lengkap 99 hari (35 halaman) |
+| [Brand Guideline PDF](docs/brand/gunara-brand-guideline.pdf) | Identitas navy-amber v1.0 (9 halaman) |
+
+**Status saat ini:** `v1.0.0.1` · Fase 1 — Fondasi & Tata Kelola (Day 1–9) · Progres 1/99 hari.
+
+**Protokol lanjutan:** buka sesi baru dengan perintah `LANJUTKAN GUNARA-OS DAY-XX` —
+seluruh hari tersisa dieksekusi berurutan, lengkap dengan update README/worklog/versi.
+
+<details>
+<summary><b>Ringkasan 10 Fase (klik untuk buka)</b></summary>
+
+| Fase | Hari | Fokus | Target |
+|---|---|---|---|
+| F1 | 1–9 | Fondasi & Tata Kelola | v1.1.0.9 |
+| F2 | 10–18 | Otoritas Domain & Produksi (Vercel + Cloudflare) | v1.2.0.18 |
+| F3 | 19–30 | Arsitektur Konten (metodologi, blog, layanan) | v1.3.0.30 |
+| F4 | 31–40 | Sistem Identitas Visual 2.0 | v1.4.0.40 |
+| F5 | 41–52 | Pengalaman Interaktif (kalkulator UMEA, explorer UWA-7) | v1.5.0.52 |
+| F6 | 53–62 | Mesin Konversi | v1.6.0.62 |
+| F7 | 63–72 | Intelijen & Otomasi AI (G-DOS Copilot) | v1.7.0.72 |
+| F8 | 73–84 | Ekosistem & Produk (portal Gunara OS, member area, API) | v1.8.0.84 |
+| F9 | 85–92 | Sertifikasi & Tata Kelola Mutu (WCAG 2.2, OWASP) | v1.9.0.92 |
+| F10 | 93–99 | Peluncuran Peradaban v2.0.0.0 | v2.0.0.99 |
+
+</details>
+
+<details>
+<summary><b>Capaian generasi 1 (klik untuk buka)</b></summary>
 
 - [x] Sistem identitas navy-amber + token terpusat
 - [x] 7 section lengkap dengan animasi reveal
 - [x] Sertifikasi kontras WCAG (script terukur)
 - [x] Brand guideline PDF 9 halaman
-- [ ] Foto profil resmi menggantikan placeholder
-- [ ] Halaman Gunara OS di juraganwebsite.web.id
-- [ ] Multi-bahasa (id / en) via `next-intl`
-- [ ] Form kontak terhubung Supabase
+- [ ] Foto profil resmi menggantikan placeholder (terjadwal ulang di roadmap 99 hari)
+- [ ] Halaman Gunara OS di juraganwebsite.web.id → Day 73
+- [ ] Multi-bahasa (id / en) via `next-intl` → Day 29
+- [ ] Form kontak terhubung backend → Day 56
+
+</details>
 
 <!-- ══════════════════════ STATS ══════════════════════ -->
 

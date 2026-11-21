@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<title>Gunara OS — Roadmap Upgrade 99 Hari</title>
+<style>
+  @page { size: 794px 1123px; margin: 0; }
+  :root {
+    /* Token brand Gunara — konsisten dengan body + brand guideline */
+    --c-bg: #F8FAFC;        /* Snow */
+    --c-primary: #0A1628;   /* Midnight Navy */
+    --c-accent: #F59E0B;    /* Amber 500 */
+    --c-muted: #5C87B8;     /* Navy 400 */
+    --c-text-muted: #475569;
+  }
+  html, body {
+    margin: 0; padding: 0;
+    width: 794px; height: 1123px;
+    background: var(--c-bg);
+    font-family: 'Manrope', 'Sora', 'Noto Sans SC', sans-serif;
+  }
+  @media screen {
+    html { height: auto; display: flex; justify-content: center; min-height: 100vh; background: var(--c-bg); }
+    body { transform-origin: top center; scale: min(1, calc(100vw / 794), calc(100vh / 1123)); margin: 0 auto; box-shadow: 0 0 60px rgba(10,22,40,0.18); }
+  }
+  .cover { width: 794px; height: 1123px; position: relative; border: none; outline: none; box-shadow: none; }
+
+  /* Layer 1 — latar: grid halus + watermark angka 99 (terpotong aman di dalam halaman) */
+  .layer1 { position: absolute; inset: 0; overflow: hidden; z-index: 1; }
+  .grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(10,22,40,0.045) 0.5px, transparent 0.5px),
+      linear-gradient(to bottom, rgba(10,22,40,0.045) 0.5px, transparent 0.5px);
+    background-size: 50px 50px;
+  }
+  .watermark {
+    position: absolute; right: 40px; bottom: 30px;
+    font-family: 'Sora', 'Noto Sans SC', sans-serif;
+    font-weight: 800; font-size: 300px; line-height: 1;
+    color: rgba(10,22,40,0.045); letter-spacing: -8px;
+  }
+  .tick { position: absolute; background: rgba(10,22,40,0.22); }
+
+  /* Layer 2 — struktur: garis jangkar vertikal tebal kiri */
+  .layer2 { position: absolute; inset: 0; z-index: 2; }
+  .anchor-line {
+    position: absolute; left: 95px; top: 112px; bottom: 112px;
+    width: 8px; background: var(--c-primary);
+  }
+  .anchor-amber {
+    position: absolute; left: 95px; top: 112px;
+    width: 8px; height: 120px; background: var(--c-accent);
+  }
+
+  /* Layer 3 — konten */
+  .layer3 { position: absolute; inset: 0; z-index: 3; }
+  .kicker {
+    position: absolute; left: 152px; top: 168px;
+    font-family: 'JetBrains Mono', 'Manrope', sans-serif;
+    font-size: 12.5pt; font-weight: 400; letter-spacing: 4px;
+    text-transform: uppercase; color: var(--c-text-muted); opacity: 0.78;
+    max-width: 560px;
+  }
+  .hero {
+    position: absolute; left: 152px; top: 300px;
+    font-family: 'Sora', 'Noto Sans SC', sans-serif;
+    font-weight: 800; font-size: 66pt; line-height: 1.08;
+    color: var(--c-primary); max-width: 580px; letter-spacing: -1px;
+  }
+  .hero .amber { color: var(--c-accent); }
+  .versionline {
+    position: absolute; left: 152px; top: 512px;
+    font-family: 'JetBrains Mono', 'Manrope', sans-serif;
+    font-size: 13pt; letter-spacing: 2px; color: var(--c-accent);
+    font-weight: 700;
+  }
+  .summary {
+    position: absolute; left: 152px; top: 585px;
+    font-family: 'Manrope', 'Noto Sans SC', sans-serif;
+    font-size: 12.5pt; line-height: 1.62; font-weight: 500;
+    color: rgba(10,22,40,0.85); max-width: 476px;
+  }
+  .meta {
+    position: absolute; left: 152px; top: 852px;
+    font-family: 'Sora', 'Noto Sans SC', sans-serif;
+    font-size: 13.5pt; line-height: 1.5; color: var(--c-primary); font-weight: 600;
+  }
+  .meta .sub {
+    display: block; margin-top: 10px;
+    font-family: 'JetBrains Mono', 'Manrope', sans-serif;
+    font-size: 10.5pt; font-weight: 400; color: var(--c-text-muted); letter-spacing: 1px;
+  }
+  .footer {
+    position: absolute; left: 152px; top: 1010px;
+    font-family: 'JetBrains Mono', 'Manrope', sans-serif;
+    font-size: 9.5pt; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--c-muted); opacity: 0.75;
+  }
+</style>
+</head>
+<body>
+  <div class="cover">
+    <div class="layer1">
+      <div class="grid"></div>
+      <div class="watermark">99</div>
+      <div class="tick" style="left: 95px; top: 106px; width: 30px; height: 1.5px;"></div>
+      <div class="tick" style="left: 95px; bottom: 106px; width: 30px; height: 1.5px;"></div>
+    </div>
+    <div class="layer2">
+      <div class="anchor-line"></div>
+      <div class="anchor-amber"></div>
+    </div>
+    <div class="layer3">
+      <div class="kicker">ROADMAP UPGRADE &middot; 99 HARI &middot; GUNARA.WEB.ID</div>
+      <div class="hero">GUNARA<br>OS</div>
+      <div class="versionline">v1.0.0.0&nbsp;&mdash;&nbsp;v2.0.0.0</div>
+      <div class="summary">
+        Peta jalan 99 hari mengangkat gunara.web.id menjadi pusat kendali konsultan
+        teknologi dan manajemen sistem paling maju: fondasi tata kelola, produksi
+        Vercel, arsitektur konten, identitas visual 2.0, pengalaman interaktif,
+        mesin konversi, intelijen AI, ekosistem, sertifikasi, hingga peluncuran
+        peradaban generasi kedua.
+      </div>
+      <div class="meta">
+        Gugun Gunara — Arsitek Sistem Peradaban Digital
+        <span class="sub">21 NOV 2026 — 27 FEB 2027&nbsp;&nbsp;|&nbsp;&nbsp;10 FASE&nbsp;&nbsp;|&nbsp;&nbsp;99 HARI</span>
+      </div>
+      <div class="footer">GUNARACORP &middot; DOKUMEN TERKONTROL &middot; VERSI 1.0.0.0</div>
+    </div>
+  </div>
+</body>
+</html>
