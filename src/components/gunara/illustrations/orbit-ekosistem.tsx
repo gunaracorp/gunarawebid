@@ -219,7 +219,7 @@ export function EcosystemOrbit() {
             ARSITEKTUR: SATU OTAK · BANYAK PINTU
           </text>
           <text x="884" y="624" textAnchor="end" className="font-mono" fontSize="8.5" letterSpacing="2" fill="#254872">
-            GUNARA-OS v1.0.0.2
+            GUNARA-OS v1.1.0.3
           </text>
         </svg>
       </div>

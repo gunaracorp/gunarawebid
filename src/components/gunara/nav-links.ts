@@ -6,6 +6,7 @@ export const NAV_LINKS = [
   { href: "/metodologi", label: "Metodologi" },
   { href: "/layanan", label: "Layanan" },
   { href: "/ekosistem", label: "Ekosistem" },
+  { href: "/blog", label: "Jurnal" },
   { href: "/tentang", label: "Tentang" },
   { href: "/faq", label: "FAQ" },
   { href: "/kontak", label: "Kontak" },

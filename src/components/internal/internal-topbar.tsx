@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Home, LogOut, Palette, FileLock2, Route, LayoutDashboard } from "lucide-react";
+import { Home, LogOut, Palette, FileLock2, Route, LayoutDashboard, Newspaper } from "lucide-react";
 import { GunaraMonogram } from "@/components/gunara/site-header";
 import { cn } from "@/lib/utils";
 
 const TABS = [
   { href: "/internal", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/internal/cms", label: "CMS", icon: Newspaper },
   { href: "/internal/identitas", label: "Identitas", icon: Palette },
   { href: "/internal/dokumen", label: "Dokumen", icon: FileLock2 },
   { href: "/internal/roadmap", label: "Roadmap", icon: Route },

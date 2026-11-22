@@ -5,6 +5,7 @@ import {
   FileLock2,
   Inbox,
   LayoutDashboard,
+  Newspaper,
   Palette,
   Route,
   ShieldCheck,
@@ -20,11 +21,19 @@ const BOOT_LINES = [
   "[ OK ] sesi terautentikasi — selamat datang kembali, arsitek",
   "[ OK ] sistem identitas trilogi — RATIFIKASI DEWAN PAKAR 46",
   "[ OK ] vault dokumen — terpisah dari repo publik, disajikan via API gated",
-  "[ OK ] situs publik — 10 halaman aktif + legal standar internasional",
-  "[ OK ] sitemap publik — 10 rute, robots menutup seluruh area rahasia",
+  "[ OK ] gunara cms — mesin konten blok-native, 14 tipe blok, revisi otomatis",
+  "[ OK ] situs publik — 12 halaman aktif + blog CMS + legal standar internasional",
+  "[ OK ] sitemap publik — rute statis + artikel CMS, robots menutup area rahasia",
 ];
 
 const PINTU = [
+  {
+    href: "/internal/cms",
+    icon: Newspaper,
+    judul: "Gunara CMS",
+    desc: "Ruang redaksi blok-native: editor 14 tipe blok, revisi mesin waktu, SEO + OG dinamis, jadwal tanpa cron.",
+    meta: "100x WORDPRESS",
+  },
   {
     href: "/internal/identitas",
     icon: Palette,
@@ -49,8 +58,8 @@ const PINTU = [
 ];
 
 const STATUS = [
-  { label: "Versi Sistem", nilai: "v1.0.0.2", note: "GUNARA-OS · 22 NOV 2026" },
-  { label: "Situs Publik", nilai: "10 HAL.", note: "BERANDA → LEGAL" },
+  { label: "Versi Sistem", nilai: "v1.1.0.0", note: "GUNARA-OS · CMS AKTIF" },
+  { label: "Situs Publik", nilai: "12+ HAL.", note: "BERANDA → BLOG → LEGAL" },
   { label: "Trilogi Logo", nilai: "3 ORGAN", note: "KUNCI PERMANEN" },
   { label: "Akses Internal", nilai: "AKTIF", note: "SESI 12 JAM" },
 ];
@@ -139,7 +148,7 @@ export default async function InternalDashboardPage() {
         <h2 id="judul-pintu" className="font-mono text-[11px] font-bold tracking-[0.24em] text-[#5c87b8]">
           PINTU PINTAS
         </h2>
-        <div className="mt-4 grid gap-5 lg:grid-cols-3">
+        <div className="mt-4 grid gap-5 lg:grid-cols-2 xl:grid-cols-4">
           {PINTU.map((p) => (
             <Link
               key={p.href}

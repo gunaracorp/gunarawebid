@@ -1,8 +1,7 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+// Gunara CMS — mesin konten blok-native.
+// Filosofi: konten tersimpan sebagai JSON blok bertipe (bukan sup HTML ala
+// WordPress), sehingga satu renderer yang sama memutar editor, pratinjau,
+// situs publik, feed, dan API headless tanpa perbedaan render.
 
 generator client {
   provider = "prisma-client-js"
@@ -21,16 +20,6 @@ model User {
   updatedAt DateTime @updatedAt
 }
 
-model Post {
-  id        String   @id @default(cuid())
-  title     String
-  content   String?
-  published Boolean  @default(false)
-  authorId  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
 /// Pesan dari form kontak situs publik — dibaca di dashboard internal.
 model PesanMasuk {
   id         String   @id @default(cuid())
@@ -41,4 +30,116 @@ model PesanMasuk {
   pesan      String
   dibaca     Boolean  @default(false)
   createdAt  DateTime @default(now())
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// GUNARA CMS — ENGINE
+// ─────────────────────────────────────────────────────────────────────────────
+
+/// Artikel CMS. Blok konten disimpan sebagai string JSON tervalidasi.
+model CmsPost {
+  id              String    @id @default(cuid())
+  slug            String    @unique
+  title           String
+  subtitle        String?
+  excerpt         String?
+  coverMediaId    String?
+  /// JSON array blok — tipe didefinisikan di src/lib/cms/blocks.ts
+  blocks          String    @default("[]")
+  /// draft | review | scheduled | published
+  status          String    @default("draft")
+  seoTitle        String?
+  seoDescription  String?
+  seoKeywords     String?
+  readingMinutes  Int       @default(0)
+  views           Int       @default(0)
+  authorName      String    @default("Gugun Gunara")
+  publishedAt     DateTime?
+  scheduledFor    DateTime?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  categories      CmsPostCategory[]
+  tags            CmsPostTag[]
+  revisions       CmsRevision[]
+  dailyViews      CmsPostView[]
+
+  @@index([status, publishedAt])
+}
+
+model CmsCategory {
+  id          String  @id @default(cuid())
+  slug        String  @unique
+  name        String
+  description String?
+  posts       CmsPostCategory[]
+}
+
+model CmsTag {
+  id    String  @id @default(cuid())
+  slug  String  @unique
+  name  String
+  posts CmsPostTag[]
+}
+
+model CmsPostCategory {
+  postId     String
+  categoryId String
+  post       CmsPost    @relation(fields: [postId], references: [id], onDelete: Cascade)
+  category   CmsCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@id([postId, categoryId])
+}
+
+model CmsPostTag {
+  postId String
+  tagId  String
+  post   CmsPost @relation(fields: [postId], references: [id], onDelete: Cascade)
+  tag    CmsTag  @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([postId, tagId])
+}
+
+/// Pustaka media — biner tersimpan di database (tahan deploy serverless,
+/// disajikan lewat /api/cms/media/[id] dengan cache permanen).
+model CmsMedia {
+  id        String   @id @default(cuid())
+  filename  String
+  mimeType  String
+  size      Int
+  width     Int?
+  height    Int?
+  alt       String?
+  data      Bytes
+  createdAt DateTime @default(now())
+}
+
+/// Snapshots otomatis setiap kali konten berubah — waktu mesin (time machine).
+model CmsRevision {
+  id        String   @id @default(cuid())
+  postId    String
+  post      CmsPost  @relation(fields: [postId], references: [id], onDelete: Cascade)
+  title     String
+  snapshot  String
+  note      String?
+  createdAt DateTime @default(now())
+
+  @@index([postId, createdAt])
+}
+
+/// Analitik bacaan per hari (tanpa cookie, tanpa pelacak pihak ketiga).
+model CmsPostView {
+  id     String  @id @default(cuid())
+  postId String
+  post   CmsPost @relation(fields: [postId], references: [id], onDelete: Cascade)
+  day    String
+  count  Int     @default(0)
+
+  @@unique([postId, day])
+  @@index([day])
+}
+
+/// Konfigurasi CMS kunci-nilai (identitas blog, deskripsi feed, dsb).
+model CmsSetting {
+  key   String @id
+  value String
 }

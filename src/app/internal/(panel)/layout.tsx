@@ -10,7 +10,7 @@ export default function InternalPanelLayout({ children }: { children: React.Reac
       </main>
       <footer className="mt-auto border-t border-[#1b3455]">
         <p className="mx-auto max-w-7xl px-4 py-5 font-mono text-[10px] tracking-[0.18em] text-[#5c87b8] sm:px-6 lg:px-8">
-          G-DOS INTERNAL · DOKUMEN RAHASIA GUNARA · SESI TERENKRIPSI HTTPS · v1.0.0.1
+          G-DOS INTERNAL · DOKUMEN RAHASIA GUNARA · SESI TERENKRIPSI HTTPS · v1.1.0.3
         </p>
       </footer>
     </div>
