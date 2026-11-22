@@ -6,6 +6,8 @@ import { Methodology } from "@/components/gunara/methodology";
 import { Ecosystem } from "@/components/gunara/ecosystem";
 import { BrandSystem } from "@/components/gunara/brand-system";
 import { ContactCta } from "@/components/gunara/contact-cta";
+import { ScrollProgress } from "@/components/gunara/scroll-progress";
+import { BackToTop } from "@/components/gunara/back-to-top";
 
 /**
  * gunara.web.id — Personal Command Center of Gugun Gunara.
@@ -15,6 +17,7 @@ import { ContactCta } from "@/components/gunara/contact-cta";
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col">
+      <ScrollProgress />
       <SiteHeader />
       <main id="konten-utama" className="flex-1">
         <Hero />
@@ -25,6 +28,7 @@ export default function Home() {
         <ContactCta />
       </main>
       <SiteFooter />
+      <BackToTop />
     </div>
   );
 }

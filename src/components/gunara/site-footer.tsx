@@ -64,8 +64,11 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-border pt-6 sm:flex-row">
-          <p className="text-xs text-muted-foreground">
-            © 2026 Gugun Gunara. Seluruh hak cipta.
+          <p className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+            <span>© 2026 Gugun Gunara. Seluruh hak cipta.</span>
+            <span className="rounded-full border border-border bg-secondary px-2.5 py-0.5 font-mono text-[10px] font-semibold tracking-[0.12em] text-muted-foreground">
+              v1.0.0.1 · BASELINE
+            </span>
           </p>
           <p className="font-mono text-[10px] tracking-[0.18em] text-muted-foreground">
             DIBANGUN DI ATAS ARSITEKTUR UWA-7 · STRUKTUR SEBELUM KARYA

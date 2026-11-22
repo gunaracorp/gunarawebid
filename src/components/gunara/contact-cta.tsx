@@ -27,7 +27,7 @@ export function ContactCta() {
             href="https://www.gconsultant.web.id"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-13 min-h-12 items-center gap-2 rounded-full bg-[var(--gn-amber-500)] px-8 py-3.5 text-sm font-bold text-[var(--gn-navy-900)] shadow-xl shadow-amber-500/25 transition-transform hover:scale-[1.03]"
+            className="inline-flex min-h-12 items-center gap-2 rounded-full bg-[var(--gn-amber-500)] px-8 py-3.5 text-sm font-bold text-[var(--gn-navy-900)] shadow-xl shadow-amber-500/25 transition-transform hover:scale-[1.03]"
           >
             <Compass className="h-4 w-4" aria-hidden />
             Konsultasi via GConsultant

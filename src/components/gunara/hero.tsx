@@ -1,20 +1,24 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, Database, FolderCog, Layers, ShieldCheck, Workflow, BrainCircuit } from "lucide-react";
 
 const DNA_FORMULA = ["V", "K", "A", "D", "P", "S", "M", "L", "E"];
+/** Makna Formula DNA sesuai dokumen brand: rumus belajar seumur hidup. */
 const DNA_LABELS: Record<string, string> = {
-  V: "Vision",
-  K: "Knowledge",
-  A: "Architecture",
-  D: "Data",
-  P: "Process",
-  S: "System",
-  M: "Measurement",
-  L: "Learning",
-  E: "Evolution",
+  V: "Verifikasi",
+  K: "Kuasai",
+  A: "Amanah",
+  D: "Dikuasai",
+  P: "Perduli",
+  S: "Sabar",
+  M: "Mandekati",
+  L: "Lepas",
+  E: "Eksistensi",
 };
+const DNA_ARIA =
+  "Formula DNA: Verifikasi, Kuasai, Amanah, Dikuasai, Perduli, Sabar, Mandekati, Lepas, Eksistensi";
 
 const OS_LAYERS = [
   { icon: BrainCircuit, name: "Knowledge", desc: "Notion — otak pengetahuan" },
@@ -26,11 +30,38 @@ const OS_LAYERS = [
 ];
 
 const STATS = [
-  { value: "165", label: "Dokumen Gunara OS", note: "Arsitektur kelembagaan" },
-  { value: "20", label: "Domain Kepemimpinan", note: "Kode PGA-01 → PGA-165" },
-  { value: "3", label: "Metodologi Proprietary", note: "UMEA · G-DOS · UWA-7" },
-  { value: "6", label: "Aset Domain Digital", note: "Satu infrastruktur bersama" },
+  { value: 165, label: "Dokumen Gunara OS", note: "Arsitektur kelembagaan" },
+  { value: 20, label: "Domain Kepemimpinan", note: "Kode PGA-01 → PGA-165" },
+  { value: 3, label: "Metodologi Proprietary", note: "UMEA · G-DOS · UWA-7" },
+  { value: 6, label: "Aset Domain Digital", note: "Satu infrastruktur bersama" },
 ];
+
+/** Angka statistik yang menghitung naik saat pertama tampil.
+ *  Menghormati preferensi reduced-motion — langsung menampilkan nilai akhir. */
+function CountUp({ value, duration = 1400 }: { value: number; duration?: number }) {
+  const reduce = useReducedMotion();
+  const [n, setN] = useState(0);
+
+  useEffect(() => {
+    let raf = 0;
+    const t0 = performance.now();
+    const tick = (t: number) => {
+      // Reduced-motion: lompat langsung ke nilai akhir pada frame pertama.
+      if (reduce) {
+        setN(value);
+        return;
+      }
+      const p = Math.min((t - t0) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      setN(Math.round(value * eased));
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [value, duration, reduce]);
+
+  return <>{n}</>;
+}
 
 const fadeUp = (delay: number) => ({
   initial: { opacity: 0, y: 26 },
@@ -104,7 +135,7 @@ export function Hero() {
             <motion.div
               {...(reduce ? {} : fadeUp(0.26))}
               className="mt-8 flex flex-wrap items-center gap-1.5"
-              aria-label="Formula DNA: Vision, Knowledge, Architecture, Data, Process, System, Measurement, Learning, Evolution"
+              aria-label={DNA_ARIA}
             >
               {DNA_FORMULA.map((k, i) => (
                 <span key={k} className="flex items-center gap-1.5">
@@ -212,7 +243,7 @@ export function Hero() {
             >
               <dt className="order-2 mt-1 text-xs text-[#a9bcd6]">{stat.label}</dt>
               <dd className="order-1 font-display text-3xl font-bold text-[#fbbf24]">
-                {stat.value}
+                <CountUp value={stat.value} />
               </dd>
               <dd className="order-3 mt-0.5 font-mono text-[10px] tracking-[0.14em] text-[#5c87b8]">
                 {stat.note}
