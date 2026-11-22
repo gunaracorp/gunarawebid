@@ -6,31 +6,16 @@
 import Image from "next/image";
 import { ArrowUpRight, Info, Lightbulb, TriangleAlert } from "lucide-react";
 import { headingAnchor, type Block } from "@/lib/cms/blocks";
+import { InlineRich } from "@/components/cms/rich-text-view";
 
 function ProseText({ text, align }: { text: string; align?: "start" | "center" }) {
-  // Paragraf mendukung **tebal** dan *miring* mini-markdown aman (tanpa HTML).
-  const parts = text.split(/(\*\*[^*]+\*\*|\*[^*]+\*)/g).filter(Boolean);
   return (
     <p
       className={`text-base leading-[1.85] text-[#c6d6ea] sm:text-[17px] ${
         align === "center" ? "text-center" : ""
       }`}
     >
-      {parts.map((p, i) => {
-        if (p.startsWith("**") && p.endsWith("**"))
-          return (
-            <strong key={i} className="font-semibold text-[#e6eef8]">
-              {p.slice(2, -2)}
-            </strong>
-          );
-        if (p.startsWith("*") && p.endsWith("*"))
-          return (
-            <em key={i} className="italic text-[#dce7f5]">
-              {p.slice(1, -1)}
-            </em>
-          );
-        return <span key={i}>{p}</span>;
-      })}
+      <InlineRich text={text} />
     </p>
   );
 }
@@ -247,11 +232,11 @@ export function BlockRenderer({ blocks }: { blocks: Block[] }) {
                 id={headingAnchor(b.text)}
                 className="scroll-mt-28 border-l-4 border-[var(--gn-amber-500)] pl-4 font-display text-2xl font-bold text-[#e6eef8] sm:text-[28px]"
               >
-                {b.text}
+                <InlineRich text={b.text} />
               </h2>
             ) : (
               <h3 key={i} className="font-display text-xl font-bold text-[#e6eef8]">
-                {b.text}
+                <InlineRich text={b.text} />
               </h3>
             );
           case "quote":
@@ -260,7 +245,9 @@ export function BlockRenderer({ blocks }: { blocks: Block[] }) {
                 key={i}
                 className="rounded-r-2xl border-l-4 border-[var(--gn-amber-500)] bg-[#0a1628] px-6 py-5"
               >
-                <p className="text-lg leading-relaxed text-[#e6eef8]">“{b.text}”</p>
+                <p className="text-lg leading-relaxed text-[#e6eef8]">
+                  <InlineRich text={b.text} />
+                </p>
                 {b.attribution ? (
                   <cite className="mt-2 block font-mono text-xs not-italic tracking-[0.14em] text-[#5c87b8]">
                     — {b.attribution}
@@ -273,7 +260,7 @@ export function BlockRenderer({ blocks }: { blocks: Block[] }) {
               <ol key={i} className="list-decimal space-y-2.5 pl-6 text-base leading-[1.8] text-[#c6d6ea] marker:font-mono marker:text-[var(--gn-amber-400)]">
                 {b.items.map((it, j) => (
                   <li key={j} className="pl-1">
-                    {it}
+                    <InlineRich text={it} />
                   </li>
                 ))}
               </ol>
@@ -282,7 +269,9 @@ export function BlockRenderer({ blocks }: { blocks: Block[] }) {
                 {b.items.map((it, j) => (
                   <li key={j} className="flex gap-3">
                     <span className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--gn-amber-500)]" aria-hidden />
-                    <span>{it}</span>
+                    <span>
+                      <InlineRich text={it} />
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -317,7 +306,9 @@ export function BlockRenderer({ blocks }: { blocks: Block[] }) {
                   {b.title ? (
                     <p className="font-display text-sm font-bold text-[#e6eef8]">{b.title}</p>
                   ) : null}
-                  <p className="mt-0.5 text-sm leading-relaxed text-[#c6d6ea]">{b.text}</p>
+                  <p className="mt-0.5 text-sm leading-relaxed text-[#c6d6ea]">
+                    <InlineRich text={b.text} />
+                  </p>
                 </div>
               </aside>
             );

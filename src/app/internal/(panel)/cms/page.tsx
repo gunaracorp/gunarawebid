@@ -36,7 +36,7 @@ export default async function CmsDashboardPage() {
             <div>
               <h1 className="font-display text-2xl font-bold">Gunara CMS — Ruang Redaksi</h1>
               <p className="font-mono text-[11px] tracking-[0.18em] text-[#5c87b8]">
-                MESIN KONTEN BLOK-NATIVE · 14 TIPE BLOK · REVISI OTOMATIS · SEO & OG DINAMIS
+                MESIN KONTEN BLOK-NATIVE · 14 TIPE BLOK · RICH TEXT INLINE · AUTOSAVE · PALET ⌘K
               </p>
             </div>
           </div>

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Home, LogOut, Palette, FileLock2, Route, LayoutDashboard, Newspaper } from "lucide-react";
+import { Home, LogOut, Palette, FileLock2, Route, LayoutDashboard, Newspaper, Command } from "lucide-react";
 import { GunaraMonogram } from "@/components/gunara/site-header";
 import { cn } from "@/lib/utils";
 
@@ -45,6 +45,16 @@ export function InternalTopbar() {
           </div>
 
           <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new Event("gn:palette"))}
+              title="Palet perintah (Ctrl/Cmd+K)"
+              aria-label="Buka palet perintah"
+              className="inline-flex h-10 items-center gap-2 rounded-full border border-[#1b3455] px-3.5 text-sm font-medium text-[#a9bcd6] transition-colors hover:border-[var(--gn-amber-500)] hover:text-[var(--gn-amber-400)]"
+            >
+              <Command className="h-4 w-4" aria-hidden />
+              <kbd className="hidden font-mono text-[10px] tracking-[0.14em] text-[#5c87b8] md:inline">⌘K</kbd>
+            </button>
             <a
               href="/"
               className="hidden h-10 items-center gap-2 rounded-full border border-[#1b3455] px-4 text-sm font-medium text-[#a9bcd6] transition-colors hover:border-[var(--gn-amber-500)] hover:text-[var(--gn-amber-400)] sm:inline-flex"

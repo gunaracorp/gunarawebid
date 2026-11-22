@@ -56,31 +56,45 @@ export async function PATCH(
   const body = (await req.json().catch(() => null)) as Record<string, unknown> | null;
   if (!body) return NextResponse.json({ ok: false, pesan: "Payload tidak valid." }, { status: 400 });
 
-  // Snapshot revisi bila konten benar-benar berubah.
+  // Snapshot revisi bila konten benar-benar berubah. Autosave (body.auto)
+  // tidak membanjiri riwayat: maksimal satu snapshot per 5 menit; simpanan
+  // manual (Ctrl+S / tombol) selalu menciptakan snapshot.
   const blokBaruJson =
     Array.isArray(body.blocks) ? serializeBlocks(body.blocks) : existing.blocks;
   const kontenBerubah = blokBaruJson !== existing.blocks || existing.title !== (typeof body.title === "string" ? body.title : existing.title);
   if (kontenBerubah && existing.blocks !== "[]") {
-    await db.cmsRevision.create({
-      data: {
-        postId: id,
-        title: existing.title,
-        snapshot: JSON.stringify({
-          title: existing.title,
-          blocks: parseBlocks(existing.blocks),
-        }),
-        note: "Sebelum penyimpanan terbaru",
-      },
-    });
-    const jumlah = await db.cmsRevision.count({ where: { postId: id } });
-    if (jumlah > MAX_REVISI) {
-      const dibuang = await db.cmsRevision.findMany({
+    const auto = body.auto === true;
+    let bolehSnapshot = true;
+    if (auto) {
+      const terakhir = await db.cmsRevision.findFirst({
         where: { postId: id },
-        orderBy: { createdAt: "asc" },
-        take: jumlah - MAX_REVISI,
-        select: { id: true },
+        orderBy: { createdAt: "desc" },
+        select: { createdAt: true },
       });
-      await db.cmsRevision.deleteMany({ where: { id: { in: dibuang.map((r) => r.id) } } });
+      bolehSnapshot = !terakhir || Date.now() - terakhir.createdAt.getTime() > 5 * 60 * 1000;
+    }
+    if (bolehSnapshot) {
+      await db.cmsRevision.create({
+        data: {
+          postId: id,
+          title: existing.title,
+          snapshot: JSON.stringify({
+            title: existing.title,
+            blocks: parseBlocks(existing.blocks),
+          }),
+          note: auto ? "Autosave" : "Sebelum penyimpanan terbaru",
+        },
+      });
+      const jumlah = await db.cmsRevision.count({ where: { postId: id } });
+      if (jumlah > MAX_REVISI) {
+        const dibuang = await db.cmsRevision.findMany({
+          where: { postId: id },
+          orderBy: { createdAt: "asc" },
+          take: jumlah - MAX_REVISI,
+          select: { id: true },
+        });
+        await db.cmsRevision.deleteMany({ where: { id: { in: dibuang.map((r) => r.id) } } });
+      }
     }
   }
 

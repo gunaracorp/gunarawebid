@@ -5,12 +5,31 @@
 
 ## Status
 
-- **Versi saat ini:** `v1.1.0.3` (Day 3 selesai)
+- **Versi saat ini:** `v1.2.0.4` (Day 4 selesai)
 - **Fase aktif:** Fase 1 — Fondasi & Tata Kelola (Day 1–9)
-- **Progres:** 3/99 hari
+- **Progres:** 4/99 hari
 - **Protokol lanjutan:** buka sesi baru dengan `LANJUTKAN GUNARA-OS DAY-XX`
 
 ## Entri
+
+### #004 · Day 04 · Min 22 Nov 2026 · `v1.1.0.3 → v1.2.0.4`
+
+**Judul:** Gunara CMS Fase 2 — Editor Ultra, Pengalaman Menulis Kelas Notion (MINOR: editor ultra)
+
+**Hasil:**
+- **Rich text inline v2** (`src/lib/cms/rich-text.ts`): tebal, miring, coret, `kode`, ==sorot==, dan [tautan](url) — parser mini-markdown aman tanpa HTML, gerbang URL (http/https/relatif/mailto saja), 24 unit test hijau via bun
+- **Satu format untuk semua kanal** (`rich-text-view.tsx`): paragraf, judul (anchor TOC dibersihkan token), kutipan, daftar, sorotan — editor = pratinjau = situs publik = feed
+- **Toolbar format inline** (`format-toolbar.tsx`): RichTextarea dengan tombol B/I/S/kode/sorot/tautan yang bekerja pada seleksi asli + Ctrl/Cmd+B dan I, toggle on/off
+- **Slash menu `/`** (`block-meta.tsx` + block-card): ketik `/` di paragraf → menu 14 tipe blok berikon dengan filter + navigasi keyboard, pilih = konversi blok langsung (ala Notion)
+- **Inserter visual:** menu "Tambah blok" naik kelas — ikon + deskripsi setiap tipe
+- **Autosave 3 detik** (post-editor): debounce setelah perubahan terakhir, indikator AUTOSAVE/TERSIMPAN, tanpa banjir revisi (API dedup snapshot autosave per 5 menit, simpanan manual selalu snapshot)
+- **Indikator kotor diperbaiki:** snapshot tersimpan kini dilacak — status "PERUBAHAN BELUM DISIMPAN" tidak lagi menempel setelah tersimpan
+- **Palet perintah G-DOS ⌘K** (`command-palette.tsx`): di seluruh area internal — lompat ke halaman, artikel (fetch malas), aksi cepat; tombol ⌘K di topbar
+- **Statistik tulis live:** blok · kata · menit baca (countWords baru) + pintasan ALT+↑↓ pindah blok dari dalam textarea
+- **Dua bug Fase 1 ditemukan & diperbaiki** saat verifikasi visual berbrowser: (1) editor artikel 500 karena ikon `SearchEngine` tidak ada di lucide-react → diganti `Search`; (2) halaman sunting selalu 404 karena `include` Prisma `tags: { select: { tag: { name: true } } }` tanpa `select` bersarang → query error ditelan `.catch(() => null)`; kini select benar + error DB tak lagi ditelan (500 jujur, bukan 404 palsu)
+- **Verifikasi penuh:** lint hijau, 24/24 unit test parser, e2e 18/18 (guard→login→autosave dedup→revisi manual→publish→render rich text→feed→hapus), screenshot dashboard/palet/editor/blog lolos visual
+
+**Pakar:** `E12` Editorial & Content Systems (150 th) · `E3` Systems Architecture (150 th) · `E17` Human–Computer Interaction (150 th)
 
 ### #003 · Day 03 · Min 22 Nov 2026 · `v1.0.0.2 → v1.1.0.3`
 

@@ -8,6 +8,8 @@
  *  - ekstraksi otomatis TOC, waktu baca, dan meta dari struktur — bukan tebakan.
  */
 
+import { stripInline } from "@/lib/cms/rich-text";
+
 // ── Tipe blok ────────────────────────────────────────────────────────────────
 
 export type Align = "start" | "center";
@@ -253,11 +255,16 @@ export function slugify(input: string): string {
 }
 
 export function headingAnchor(text: string): string {
-  return slugify(text) || "bagian";
+  return slugify(stripInline(text)) || "bagian";
 }
 
 /** Waktu baca: ~200 kata/menit + penalti kecil untuk gambar/kode. */
 export function computeReadingMinutes(blocks: Block[]): number {
+  return Math.max(1, Math.ceil(countWords(blocks) / 200));
+}
+
+/** Jumlah kata murni dari seluruh blok — untuk statistik editor live. */
+export function countWords(blocks: Block[]): number {
   let words = 0;
   for (const b of blocks) {
     switch (b.type) {
@@ -297,7 +304,7 @@ export function computeReadingMinutes(blocks: Block[]): number {
         break;
     }
   }
-  return Math.max(1, Math.ceil(words / 200));
+  return words;
 }
 
 /** Daftar isi otomatis dari blok heading level-2. */
@@ -307,16 +314,16 @@ export function extractToc(blocks: Block[]): { anchor: string; text: string }[] 
       (b): b is Extract<Block, { type: "heading" }> =>
         b.type === "heading" && b.level === 2
     )
-    .map((b) => ({ anchor: headingAnchor(b.text), text: b.text }));
+    .map((b) => ({ anchor: headingAnchor(b.text), text: stripInline(b.text) }));
 }
 
 /** Pratinjau teks otomatis dari blok, dipakai bila excerpt kosong. */
 export function deriveExcerpt(blocks: Block[], fallback = ""): string {
   if (fallback.trim()) return fallback.trim().slice(0, 220);
   const para = blocks.find((b) => b.type === "paragraph");
-  if (para && para.type === "paragraph") return para.text.slice(0, 220);
+  if (para && para.type === "paragraph") return stripInline(para.text).slice(0, 220);
   const quote = blocks.find((b) => b.type === "quote");
-  if (quote && quote.type === "quote") return quote.text.slice(0, 220);
+  if (quote && quote.type === "quote") return stripInline(quote.text).slice(0, 220);
   return "";
 }
 

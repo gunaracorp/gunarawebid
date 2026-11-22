@@ -24,7 +24,10 @@ import {
   X,
 } from "lucide-react";
 import type { Block, BlockType } from "@/lib/cms/blocks";
-import { BLOCK_LABEL } from "@/lib/cms/blocks";
+import { BLOCK_LABEL, BLOCK_TYPES } from "@/lib/cms/blocks";
+import { stripInline } from "@/lib/cms/rich-text";
+import { RichTextarea } from "@/components/cms/format-toolbar";
+import { SlashList } from "@/components/cms/block-meta";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
@@ -96,22 +99,79 @@ function DaftarEditor<T>(props: {
 
 type Patch = (partial: Partial<Block>) => void;
 
-function EditorIsi({ block, patch }: { block: Block; patch: Patch }) {
+function EditorIsi(props: {
+  block: Block;
+  patch: Patch;
+  pindah?: (e: React.KeyboardEvent) => void;
+}) {
+  const { block, patch, pindah } = props;
+  // Slash menu "/" — hanya untuk blok paragraf.
+  const [slash, setSlash] = useState<{ q: string; idx: number } | null>(null);
   const [pilihMedia, setPilihMedia] = useState(false);
 
   switch (block.type) {
-    case "paragraph":
+    case "paragraph": {
+      const q = slash?.q ?? "";
+      const hasilSlash = BLOCK_TYPES.filter(
+        (t) =>
+          !q ||
+          BLOCK_LABEL[t].toLowerCase().includes(q) ||
+          t.includes(q)
+      );
+      const idxAman = hasilSlash.length > 0 ? Math.min(slash?.idx ?? 0, hasilSlash.length - 1) : 0;
       return (
         <div className="space-y-3">
-          <Field label="Teks paragraf">
-            <Textarea
+          <div className="relative">
+            <RichTextarea
+              label="TEKS PARAGRAF"
               rows={4}
-              className={cn(inputCls, "leading-relaxed")}
               value={block.text}
-              onChange={(e) => patch({ text: e.target.value })}
-              placeholder="Tulis paragraf… (**tebal** dan *miring* didukung)"
+              onChange={(v) => {
+                const m = /^\/([\w-]*)$/.exec(v);
+                if (m) setSlash({ q: m[1].toLowerCase(), idx: 0 });
+                else if (slash) setSlash(null);
+                patch({ text: v });
+              }}
+              onKeyDown={(e) => {
+                if (slash) {
+                  if (e.key === "ArrowDown") {
+                    e.preventDefault();
+                    setSlash({ q: slash.q, idx: hasilSlash.length > 0 ? (idxAman + 1) % hasilSlash.length : 0 });
+                    return;
+                  }
+                  if (e.key === "ArrowUp") {
+                    e.preventDefault();
+                    setSlash({ q: slash.q, idx: hasilSlash.length > 0 ? (idxAman - 1 + hasilSlash.length) % hasilSlash.length : 0 });
+                    return;
+                  }
+                  if ((e.key === "Enter" || e.key === "Tab") && hasilSlash.length > 0) {
+                    e.preventDefault();
+                    patch(tipeKeBlok(hasilSlash[idxAman]) as Partial<Block>);
+                    setSlash(null);
+                    return;
+                  }
+                  if (e.key === "Escape") {
+                    e.preventDefault();
+                    setSlash(null);
+                    return;
+                  }
+                }
+                pindah?.(e);
+              }}
+              placeholder="Tulis paragraf… ketik / untuk menu blok — **tebal**, *miring*, [tautan](url) didukung"
             />
-          </Field>
+            {slash ? (
+              <SlashList
+                items={hasilSlash}
+                aktif={idxAman}
+                onHover={(i) => setSlash({ q: slash.q, idx: i })}
+                onPilih={(t) => {
+                  patch(tipeKeBlok(t) as Partial<Block>);
+                  setSlash(null);
+                }}
+              />
+            ) : null}
+          </div>
           <div className="flex items-center gap-2">
             <button
               type="button"
@@ -142,18 +202,19 @@ function EditorIsi({ block, patch }: { block: Block; patch: Patch }) {
           </div>
         </div>
       );
+    }
 
     case "heading":
       return (
         <Baris>
-          <Field label="Teks judul bagian">
-            <Input
-              className={inputCls}
-              value={block.text}
-              onChange={(e) => patch({ text: e.target.value })}
-              placeholder="Judul bagian"
-            />
-          </Field>
+          <RichTextarea
+            label="TEKS JUDUL BAGIAN"
+            rows={1}
+            value={block.text}
+            onChange={(v) => patch({ text: v })}
+            onKeyDown={(e) => pindah?.(e)}
+            placeholder="Judul bagian"
+          />
           <Field label="Level">
             <div className="flex gap-2">
               {[2, 3].map((lv) => (
@@ -179,14 +240,13 @@ function EditorIsi({ block, patch }: { block: Block; patch: Patch }) {
     case "quote":
       return (
         <div className="space-y-3">
-          <Field label="Kutipan">
-            <Textarea
-              rows={3}
-              className={inputCls}
-              value={block.text}
-              onChange={(e) => patch({ text: e.target.value })}
-            />
-          </Field>
+          <RichTextarea
+            label="KUTIPAN"
+            rows={3}
+            value={block.text}
+            onChange={(v) => patch({ text: v })}
+            onKeyDown={(e) => pindah?.(e)}
+          />
           <Field label="Sumber (opsional)">
             <Input
               className={inputCls}
@@ -221,7 +281,7 @@ function EditorIsi({ block, patch }: { block: Block; patch: Patch }) {
                 className={cn(inputCls, "pr-6")}
                 value={it}
                 onChange={(e) => set(e.target.value)}
-                placeholder="Isi butir"
+                placeholder="Isi butir — **tebal**, [tautan](url) didukung"
               />
             )}
           />
@@ -299,6 +359,7 @@ function EditorIsi({ block, patch }: { block: Block; patch: Patch }) {
               className={cn(inputCls, "font-mono text-xs leading-relaxed")}
               value={block.code}
               onChange={(e) => patch({ code: e.target.value })}
+              onKeyDown={(e) => pindah?.(e)}
             />
           </Field>
         </div>
@@ -334,14 +395,13 @@ function EditorIsi({ block, patch }: { block: Block; patch: Patch }) {
               onChange={(e) => patch({ title: e.target.value })}
             />
           </Field>
-          <Field label="Teks">
-            <Textarea
-              rows={3}
-              className={inputCls}
-              value={block.text}
-              onChange={(e) => patch({ text: e.target.value })}
-            />
-          </Field>
+          <RichTextarea
+            label="TEKS"
+            rows={3}
+            value={block.text}
+            onChange={(v) => patch({ text: v })}
+            onKeyDown={(e) => pindah?.(e)}
+          />
         </div>
       );
     }
@@ -565,6 +625,14 @@ export function BlockCard(props: {
 
   const patch: Patch = (partial) => onChange({ ...block, ...partial } as Block);
 
+  // Alt+↑/↓ — pindahkan blok tanpa melepas tangan dari keyboard.
+  function pindahKey(e: React.KeyboardEvent) {
+    if (e.altKey && !e.metaKey && !e.ctrlKey && (e.key === "ArrowUp" || e.key === "ArrowDown")) {
+      e.preventDefault();
+      (e.key === "ArrowUp" ? onNaik : onTurun)();
+    }
+  }
+
   return (
     <div
       ref={setNodeRef}
@@ -619,7 +687,7 @@ export function BlockCard(props: {
       </div>
       {terbuka ? (
         <div className="border-t border-[#12243d] px-4 py-4">
-          <EditorIsi block={block} patch={patch} />
+          <EditorIsi block={block} patch={patch} pindah={pindahKey} />
         </div>
       ) : null}
     </div>
@@ -655,11 +723,11 @@ function KontrolBtn(props: {
 function ringkasBlok(b: Block): string {
   switch (b.type) {
     case "paragraph":
-      return b.text;
+      return stripInline(b.text);
     case "heading":
-      return b.text;
+      return stripInline(b.text);
     case "quote":
-      return b.text;
+      return stripInline(b.text);
     case "list":
       return `${b.items.length} butir`;
     case "image":
@@ -667,7 +735,7 @@ function ringkasBlok(b: Block): string {
     case "code":
       return `${b.language} · ${b.code.split("\n").length} baris`;
     case "callout":
-      return b.title ?? b.text;
+      return b.title ?? stripInline(b.text);
     case "divider":
       return "";
     case "stats":

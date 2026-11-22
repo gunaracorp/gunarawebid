@@ -42,14 +42,14 @@ import {
   Trash2,
 } from "lucide-react";
 import type { Block, BlockType } from "@/lib/cms/blocks";
-import { BLOCK_LABEL, BLOCK_TYPES, STATUS_LABEL } from "@/lib/cms/blocks";
+import { computeReadingMinutes, countWords, STATUS_LABEL } from "@/lib/cms/blocks";
 import { BlockRenderer } from "@/components/cms/block-renderer";
 import { BlockCard, tipeKeBlok } from "@/components/cms/block-card";
+import { BlockInserterMenu } from "@/components/cms/block-meta";
 import { MediaPickerDialog } from "@/components/cms/media-picker";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Switch } from "@/components/ui/switch";
 import { toast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
 
@@ -131,13 +131,14 @@ export function PostEditor(props: {
   const [pratinjau, setPratinjau] = useState(false);
   const [menyimpan, setMenyimpan] = useState(false);
   const [tersimpanPada, setTersimpanPada] = useState<string | null>(null);
+  const [modeSimpan, setModeSimpan] = useState<"manual" | "auto">("manual");
   const [tab, setTab] = useState<"publikasi" | "seo" | "revisi">("publikasi");
   const [revisi, setRevisi] = useState<{ id: string; title: string; note: string | null; createdAt: string }[]>([]);
   const [pilihSampul, setPilihSampul] = useState(false);
 
   const firstRender = useRef(true);
   const snapshotAwal = useMemo(() => JSON.stringify(initial), [initial]);
-  const snapshotKini = useMemo(
+  const buatSnapshot = useCallback(
     () =>
       JSON.stringify({
         title, slug, subtitle, excerpt, coverMediaId, status, scheduledFor,
@@ -148,7 +149,11 @@ export function PostEditor(props: {
       }),
     [title, slug, subtitle, excerpt, coverMediaId, status, scheduledFor, seoTitle, seoDescription, seoKeywords, categoryIds, tags, blocks]
   );
-  const kotor = snapshotKini !== snapshotAwal;
+  const snapshotKini = useMemo(() => buatSnapshot(), [buatSnapshot]);
+  // Snapshot keadaan terakhir yang benar-benar tersimpan ke server.
+  const [snapshotTersimpan, setSnapshotTersimpan] = useState<string | null>(null);
+  const kotor =
+    snapshotTersimpan === null ? snapshotKini !== snapshotAwal : snapshotKini !== snapshotTersimpan;
 
   // ── Aksi simpan ────────────────────────────────────────────────────────────
 
@@ -173,12 +178,14 @@ export function PostEditor(props: {
     [title, slug, subtitle, excerpt, coverMediaId, seoTitle, seoDescription, seoKeywords, status, scheduledFor, blocks, categories, categoryIds, tags]
   );
 
-  const simpan = useCallback(async (): Promise<string | null> => {
+  const simpan = useCallback(async (opts?: { auto?: boolean }): Promise<string | null> => {
+    const auto = opts?.auto === true;
     if (!title.trim()) {
-      toast({ title: "Judul wajib diisi", variant: "destructive" });
+      if (!auto) toast({ title: "Judul wajib diisi", variant: "destructive" });
       return null;
     }
     setMenyimpan(true);
+    setModeSimpan(auto ? "auto" : "manual");
     try {
       if (!id) {
         const res = await fetch("/api/internal/cms/posts", {
@@ -192,25 +199,27 @@ export function PostEditor(props: {
         const res2 = await fetch(`/api/internal/cms/posts/${newId}`, {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload()),
+          body: JSON.stringify({ ...payload(), auto: auto || undefined }),
         });
         const data2 = await res2.json();
         if (!res2.ok || !data2.ok) throw new Error(data2.pesan);
         setId(newId);
-        toast({ title: "Artikel dibuat", description: `/${data2.post.slug}` });
+        setSnapshotTersimpan(buatSnapshot());
+        if (!auto) toast({ title: "Artikel dibuat", description: `/${data2.post.slug}` });
         router.replace(`/internal/cms/${newId}`);
-        router.refresh();
+        if (!auto) router.refresh();
         return newId;
       }
       const res = await fetch(`/api/internal/cms/posts/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload()),
+        body: JSON.stringify({ ...payload(), auto: auto || undefined }),
       });
       const data = await res.json();
       if (!res.ok || !data.ok) throw new Error(data.pesan);
       setTersimpanPada(new Date().toLocaleTimeString("id-ID", { hour: "2-digit", minute: "2-digit", second: "2-digit" }));
-      router.refresh();
+      setSnapshotTersimpan(buatSnapshot());
+      if (!auto) router.refresh();
       return id;
     } catch (e) {
       toast({
@@ -222,7 +231,7 @@ export function PostEditor(props: {
     } finally {
       setMenyimpan(false);
     }
-  }, [id, title, subtitle, payload, router]);
+  }, [id, title, subtitle, payload, router, buatSnapshot]);
 
   // Ctrl/Cmd+S
   useEffect(() => {
@@ -235,6 +244,22 @@ export function PostEditor(props: {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [simpan]);
+
+  // Autosave: 3 detik setelah perubahan terakhir — tanpa banjir revisi
+  // (API mendeduplikasi snapshot autosave per 5 menit).
+  const simpanRef = useRef(simpan);
+  simpanRef.current = simpan;
+  const autoTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(() => {
+    if (!kotor) return;
+    if (autoTimer.current) clearTimeout(autoTimer.current);
+    autoTimer.current = setTimeout(() => {
+      if (document.visibilityState !== "hidden") void simpanRef.current({ auto: true });
+    }, 3000);
+    return () => {
+      if (autoTimer.current) clearTimeout(autoTimer.current);
+    };
+  }, [kotor, snapshotKini]);
 
   // Peringatan sebelum menutup dengan perubahan belum disimpan
   useEffect(() => {
@@ -352,6 +377,8 @@ export function PostEditor(props: {
 
   const st = STATUS_LABEL[status] ?? STATUS_LABEL.draft;
   const blocksRuntime = blocks.map((b) => b.block);
+  const jumlahKata = countWords(blocksRuntime);
+  const menitBaca = computeReadingMinutes(blocksRuntime);
 
   // ── Render ─────────────────────────────────────────────────────────────────
 
@@ -374,9 +401,12 @@ export function PostEditor(props: {
             {menyimpan ? (
               <span className="flex items-center gap-2"><Loader2 className="h-3 w-3 animate-spin" /> MENYIMPAN…</span>
             ) : kotor ? (
-              "PERUBAHAN BELUM DISIMPAN"
+              "BELUM TERSIMPAN — AUTOSAVE AKTIF"
             ) : tersimpanPada ? (
-              <span className="flex items-center gap-1.5"><Check className="h-3 w-3 text-emerald-400" /> TERSIMPAN {tersimpanPada}</span>
+              <span className="flex items-center gap-1.5">
+                <Check className="h-3 w-3 text-emerald-400" />
+                {modeSimpan === "auto" ? "AUTOSAVE" : "TERSIMPAN"} {tersimpanPada}
+              </span>
             ) : (
               "SEMUA TERSIMPAN"
             )}
@@ -564,19 +594,25 @@ export function PostEditor(props: {
                   <ChevronDown className={cn("h-4 w-4 transition-transform", menuBlok && "rotate-180")} />
                 </button>
                 {menuBlok ? (
-                  <div className="absolute inset-x-0 bottom-full z-30 mb-2 grid grid-cols-2 gap-2 rounded-2xl border border-[#1b3455] bg-[#060d1f] p-3 shadow-2xl shadow-black/50 sm:grid-cols-4">
-                    {BLOCK_TYPES.map((t) => (
-                      <button
-                        key={t}
-                        type="button"
-                        onClick={() => tambahBlok(t)}
-                        className="rounded-xl border border-[#1b3455] bg-[#0a1628] px-3 py-2.5 text-left text-xs font-medium text-[#a9bcd6] transition-colors hover:border-[var(--gn-amber-500)]/60 hover:text-[var(--gn-amber-400)]"
-                      >
-                        {BLOCK_LABEL[t]}
-                      </button>
-                    ))}
+                  <div className="absolute inset-x-0 bottom-full z-30 mb-2 max-h-[70vh] overflow-y-auto rounded-2xl border border-[#1b3455] bg-[#060d1f] p-3 shadow-2xl shadow-black/50">
+                    <BlockInserterMenu onPilih={tambahBlok} />
                   </div>
                 ) : null}
+              </div>
+
+              <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5 rounded-2xl border border-[#1b3455] bg-[#0a1628] px-5 py-3.5 font-mono text-[10px] tracking-[0.16em] text-[#5c87b8]">
+                <span>
+                  <span className="font-bold text-[var(--gn-amber-400)]">{blocks.length}</span> BLOK
+                </span>
+                <span>
+                  <span className="font-bold text-[var(--gn-amber-400)]">{jumlahKata.toLocaleString("id-ID")}</span> KATA
+                </span>
+                <span>
+                  ~<span className="font-bold text-[var(--gn-amber-400)]">{menitBaca}</span> MENIT BACA
+                </span>
+                <span className="ml-auto hidden lg:inline">
+                  / MENU BLOK · ALT+↑↓ PINDAH BLOK · CTRL+S SIMPAN · AUTOSAVE 3 DTK
+                </span>
               </div>
             </div>
           </div>
@@ -587,7 +623,7 @@ export function PostEditor(props: {
               {(
                 [
                   { k: "publikasi", label: "Publikasi", icon: Newspaper },
-                  { k: "seo", label: "SEO", icon: SearchEngine },
+                  { k: "seo", label: "SEO", icon: Search },
                   { k: "revisi", label: "Revisi", icon: History },
                 ] as const
               ).map((t) => (

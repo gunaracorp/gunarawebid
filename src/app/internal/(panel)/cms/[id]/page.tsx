@@ -16,15 +16,14 @@ export default async function SuntingArtikelPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const post = await db.cmsPost
-    .findUnique({
-      where: { id },
-      include: {
-        categories: { select: { categoryId: true } },
-        tags: { select: { tag: { name: true } } },
-      },
-    })
-    .catch(() => null);
+  // Tanpa penelan error: kegagalan DB harus tampak sebagai 500, bukan 404 palsu.
+  const post = await db.cmsPost.findUnique({
+    where: { id },
+    include: {
+      categories: { select: { categoryId: true } },
+      tags: { select: { tag: { select: { name: true } } } },
+    },
+  });
   if (!post) notFound();
 
   const categories = await db.cmsCategory

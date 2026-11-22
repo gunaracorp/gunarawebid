@@ -51,6 +51,7 @@ v 1 . 2 . 0 . 18
 | Day 1 selesai | `v1.0.0.1` | Tata kelola versi aktif |
 | Day 2 selesai | `v1.0.0.2` | Situs publik standar internasional |
 | Day 3 — Gunara CMS Fase 1 (engine) | `v1.1.0.3` | MINOR: mesin konten blok-native aktif |
+| Day 4 — Gunara CMS Fase 2 (editor ultra) | `v1.2.0.4` | MINOR: rich text inline, autosave, slash menu, palet ⌘K |
 | Fase 1 tuntas (Day 9) | `v1.1.0.9` | Fondasi & observabilitas |
 | Fase 4 tuntas (Day 40) | `v1.4.0.40` | Identitas Visual 2.0 |
 | Hotfix (Day 57) | `v1.5.1.57` | PATCH +1 di luar jadwal |
