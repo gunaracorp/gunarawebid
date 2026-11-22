@@ -29,6 +29,9 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { SectionHeading } from "@/components/gunara/section-heading";
 import { Reveal } from "@/components/gunara/reveal";
+import { UmeaBlueprint } from "@/components/gunara/illustrations/umea-blueprint";
+import { GdosBlueprint } from "@/components/gunara/illustrations/gdos-blueprint";
+import { Uwa7Blueprint } from "@/components/gunara/illustrations/uwa7-blueprint";
 
 /* ------------------------------ UMEA ------------------------------ */
 
@@ -79,7 +82,9 @@ const FUNGSI_KRITIS = [
 
 function UmeaPanel() {
   return (
-    <div className="grid gap-6 lg:grid-cols-2">
+    <div className="space-y-8">
+      <UmeaBlueprint />
+      <div className="grid gap-6 lg:grid-cols-2">
       <div className="space-y-4">
         <h3 className="font-display text-xl font-bold">
           3 Hukum Besar{" "}
@@ -170,6 +175,7 @@ function UmeaPanel() {
           </p>
         </div>
       </div>
+      </div>
     </div>
   );
 }
@@ -191,7 +197,9 @@ const GDOS_STACK = [
 
 function GdosPanel() {
   return (
-    <div className="grid gap-6 lg:grid-cols-[1fr_1.1fr]">
+    <div className="space-y-8">
+      <GdosBlueprint />
+      <div className="grid gap-6 lg:grid-cols-[1fr_1.1fr]">
       <div>
         <h3 className="font-display text-xl font-bold">Dua DNA yang Saling Mengunci</h3>
         <div className="mt-4 space-y-3">
@@ -242,6 +250,7 @@ function GdosPanel() {
         <p className="mt-4 rounded-xl border border-dashed border-[var(--gn-amber-500)]/50 bg-[var(--gn-amber-tint)]/40 p-4 text-center font-mono text-[11px] tracking-[0.14em] text-[var(--gn-amber-800)] dark:bg-[var(--gn-amber-500)]/5 dark:text-[var(--gn-amber-300)]">
           CONNECT ONLY WHERE VALUE &gt; COMPLEXITY
         </p>
+      </div>
       </div>
     </div>
   );
@@ -296,7 +305,9 @@ const UWA_LAPIS = [
 
 function Uwa7Panel() {
   return (
-    <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+    <div className="space-y-8">
+      <Uwa7Blueprint />
+      <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
       <div>
         <h3 className="font-display text-xl font-bold">Tujuh Lapis Satu Arsitektur</h3>
         <ul className="mt-4 space-y-2">
@@ -349,6 +360,7 @@ function Uwa7Panel() {
             Index → Rank → Measure → Learn → Improve → Repeat.
           </p>
         </div>
+      </div>
       </div>
     </div>
   );

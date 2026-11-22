@@ -10,6 +10,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { db } from "@/lib/db";
+import { VaultBlueprint } from "@/components/gunara/illustrations/vault-blueprint";
 
 export const metadata: Metadata = {
   title: "Dashboard",
@@ -121,6 +122,16 @@ export default async function InternalDashboardPage() {
             </div>
           ))}
         </dl>
+      </section>
+
+      {/* Peta keamanan — arsitektur isolasi dua zona */}
+      <section aria-labelledby="judul-keamanan">
+        <h2 id="judul-keamanan" className="font-mono text-[11px] font-bold tracking-[0.24em] text-[#5c87b8]">
+          PETA KEAMANAN
+        </h2>
+        <div className="mt-4">
+          <VaultBlueprint />
+        </div>
       </section>
 
       {/* Pintu pintas */}

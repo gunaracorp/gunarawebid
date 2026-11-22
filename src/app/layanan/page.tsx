@@ -15,6 +15,7 @@ import {
 import { PublicShell } from "@/components/gunara/site-footer";
 import { SectionHeading } from "@/components/gunara/section-heading";
 import { Reveal } from "@/components/gunara/reveal";
+import { PartnershipFlow } from "@/components/gunara/illustrations/partnership-flow";
 
 export const metadata: Metadata = {
   title: "Layanan — Jalur Kerja Sama untuk Client",
@@ -200,6 +201,11 @@ export default function LayananPage() {
             title="Dari Pemetaan menuju Evolusi"
             description="Satu siklus yang sama untuk semua jalur — karena sistem yang baik selalu dibangun dengan urutan yang benar."
           />
+
+          <Reveal className="mt-12">
+            <PartnershipFlow />
+          </Reveal>
+
           <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {ALUR.map((a, i) => (
               <Reveal key={a.n} delay={i * 0.08}>

@@ -269,9 +269,42 @@
   to { transform: rotate(360deg); }
 }
 
+/* == Ilustrasi diagram (blueprint) == */
+/* Orbit ekosistem: cincin & satelit mengorbit pelan di sekitar pusat kendali */
+.orbit-spin {
+  animation: spin-slow 160s linear infinite;
+}
+.orbit-spin-fast {
+  animation: spin-slow 70s linear infinite reverse;
+}
+/* Aliran energi pada jalur koneksi diagram */
+.dash-flow {
+  animation: dash-flow 5.5s linear infinite;
+}
+@keyframes dash-flow {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: -110; }
+}
+/* Warna adaptif untuk diagram yang mengikuti tema terang/gelap */
+.diag-amber {
+  fill: var(--gn-amber-600);
+}
+.dark .diag-amber {
+  fill: var(--gn-amber-400);
+}
+.diag-amber-stroke {
+  stroke: var(--gn-amber-600);
+}
+.dark .diag-amber-stroke {
+  stroke: var(--gn-amber-400);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .status-dot::after,
-  .spin-slow {
+  .spin-slow,
+  .orbit-spin,
+  .orbit-spin-fast,
+  .dash-flow {
     animation: none;
   }
   html {
