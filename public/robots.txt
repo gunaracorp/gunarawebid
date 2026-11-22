@@ -1,14 +1,34 @@
+# gunara.web.id — kebijakan crawler
+# Area internal (dokumen rahasia, detail logo, vault) ditutup untuk semua mesin pencari.
+
 User-agent: Googlebot
 Allow: /
+Disallow: /internal
+Disallow: /internal/
+Disallow: /api/
 
 User-agent: Bingbot
 Allow: /
+Disallow: /internal
+Disallow: /internal/
+Disallow: /api/
 
 User-agent: Twitterbot
 Allow: /
+Disallow: /internal
+Disallow: /internal/
+Disallow: /api/
 
 User-agent: facebookexternalhit
 Allow: /
+Disallow: /internal
+Disallow: /internal/
+Disallow: /api/
 
 User-agent: *
 Allow: /
+Disallow: /internal
+Disallow: /internal/
+Disallow: /api/
+
+Sitemap: https://gunara.web.id/sitemap.xml

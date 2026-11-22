@@ -65,3 +65,6 @@ prompt
 /scripts/roadmap_body.pdf
 /scripts/roadmap_cover.pdf
 /tool-results/
+
+# vault dokumen rahasia — tidak pernah masuk repo
+/internal-vault/

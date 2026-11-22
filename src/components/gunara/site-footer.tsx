@@ -1,5 +1,23 @@
-import { GunaraMonogram } from "@/components/gunara/site-header";
+import Link from "next/link";
+import { GunaraMonogram, SiteHeader } from "@/components/gunara/site-header";
 import { NAV_LINKS, EKOSISTEM_LINKS } from "@/components/gunara/nav-links";
+import { ScrollProgress } from "@/components/gunara/scroll-progress";
+import { BackToTop } from "@/components/gunara/back-to-top";
+
+/** Shell situs publik — header sticky, main fleksibel, footer menempel di bawah. */
+export function PublicShell({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="flex min-h-screen flex-col">
+      <ScrollProgress />
+      <SiteHeader />
+      <main id="konten-utama" className="flex-1">
+        {children}
+      </main>
+      <SiteFooter />
+      <BackToTop />
+    </div>
+  );
+}
 
 export function SiteFooter() {
   return (
@@ -31,12 +49,12 @@ export function SiteFooter() {
             <ul className="mt-4 space-y-2.5">
               {NAV_LINKS.map((l) => (
                 <li key={l.href}>
-                  <a
+                  <Link
                     href={l.href}
                     className="text-sm text-muted-foreground transition-colors hover:text-[var(--gn-amber-700)] dark:hover:text-[var(--gn-amber-400)]"
                   >
                     {l.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

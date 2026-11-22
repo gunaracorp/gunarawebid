@@ -30,3 +30,15 @@ model Post {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+/// Pesan dari form kontak situs publik — dibaca di dashboard internal.
+model PesanMasuk {
+  id         String   @id @default(cuid())
+  nama       String
+  email      String
+  organisasi String?
+  kebutuhan  String
+  pesan      String
+  dibaca     Boolean  @default(false)
+  createdAt  DateTime @default(now())
+}

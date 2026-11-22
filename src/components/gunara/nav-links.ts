@@ -1,11 +1,13 @@
 /** Tautan navigasi bersama — modul biasa (bukan client), aman dipakai
- *  oleh server component maupun client component. */
+ *  oleh server component maupun client component.
+ *  Situs publik kini multi-halaman: setiap seksi punya rutenya sendiri. */
 export const NAV_LINKS = [
-  { href: "#filosofi", label: "Filosofi" },
-  { href: "#metodologi", label: "Metodologi" },
-  { href: "#ekosistem", label: "Ekosistem" },
-  { href: "#sistem", label: "Sistem Warna" },
-  { href: "#kontak", label: "Kontak" },
+  { href: "/", label: "Beranda" },
+  { href: "/metodologi", label: "Metodologi" },
+  { href: "/layanan", label: "Layanan" },
+  { href: "/ekosistem", label: "Ekosistem" },
+  { href: "/tentang", label: "Tentang" },
+  { href: "/kontak", label: "Kontak" },
 ] as const;
 
 export const EKOSISTEM_LINKS = [

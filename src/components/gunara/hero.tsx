@@ -159,14 +159,14 @@ export function Hero() {
               className="mt-9 flex flex-wrap items-center gap-3"
             >
               <a
-                href="#metodologi"
+                href="/metodologi"
                 className="inline-flex h-12 items-center gap-2 rounded-full bg-[var(--gn-amber-500)] px-7 text-sm font-bold text-[#0a1628] shadow-xl shadow-amber-500/25 transition-transform hover:scale-[1.03]"
               >
                 Jelajahi Metodologi
                 <ArrowRight className="h-4 w-4" aria-hidden />
               </a>
               <a
-                href="#ekosistem"
+                href="/ekosistem"
                 className="inline-flex h-12 items-center gap-2 rounded-full border border-[#254872] bg-[#0a1628]/60 px-7 text-sm font-semibold text-[#e6eef8] transition-colors hover:border-[var(--gn-amber-500)] hover:text-[#fbbf24]"
               >
                 Masuk Ekosistem
