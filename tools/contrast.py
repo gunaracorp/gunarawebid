@@ -48,6 +48,6 @@ for fg, bg, ctx in PAIRS:
 for r in results:
     print(f"{r['fg']} di atas {r['bg']}: {r['ratio']}:1  [{r['level']}]  — {r['context']}")
 
-with open("/home/z/my-project/scripts/contrast-results.json", "w") as f:
+with open(__import__("os").path.join(__import__("os").path.dirname(__file__), "contrast-results.json"), "w") as f:
     json.dump(results, f, indent=2)
 print("\nTersimpan ke scripts/contrast-results.json")

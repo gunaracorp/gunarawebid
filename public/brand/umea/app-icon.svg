@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Ikon aplikasi UMEA™">
+<title>Ikon aplikasi UMEA™</title>
+<defs><linearGradient id="gu" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#12233D"/><stop offset="1" stop-color="#060D1F"/></linearGradient></defs>
+<rect width="512" height="512" rx="116" fill="url(#gu)"/>
+<g transform="scale(10.66667)"><rect x="1.5" y="1.5" width="45" height="45" rx="11" fill="#0A1628"/>
+<rect x="8.8" y="34.8" width="4.4" height="5.0" rx="1.4" fill="#D97706"/>
+<rect x="14.0" y="31.8" width="4.4" height="8.0" rx="1.4" fill="#D97706"/>
+<rect x="19.2" y="28.8" width="4.4" height="11.0" rx="1.4" fill="#F59E0B"/>
+<rect x="24.4" y="24.8" width="4.4" height="15.0" rx="1.4" fill="#F59E0B"/>
+<rect x="29.6" y="19.8" width="4.4" height="20.0" rx="1.4" fill="#FBBF24"/>
+<rect x="34.8" y="13.8" width="4.4" height="26.0" rx="1.4" fill="#FCD34D"/>
+<circle cx="37" cy="9.4" r="2.4" fill="#FBBF24"/></g>
+</svg>

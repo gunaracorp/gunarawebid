@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="Mark Gunara OS - Kernel G-DOS">
+<title>Mark Gunara OS - Kernel G-DOS</title>
+<rect x="6.5" y="6.5" width="35" height="35" rx="8" fill="#0A1628"/>
+<rect x="13.7" y="3" width="2.6" height="3.5" rx="1.1" fill="#254872"/>
+<rect x="13.7" y="41.5" width="2.6" height="3.5" rx="1.1" fill="#254872"/>
+<rect x="22.7" y="3" width="2.6" height="3.5" rx="1.1" fill="#254872"/>
+<rect x="22.7" y="41.5" width="2.6" height="3.5" rx="1.1" fill="#254872"/>
+<rect x="31.7" y="3" width="2.6" height="3.5" rx="1.1" fill="#254872"/>
+<rect x="31.7" y="41.5" width="2.6" height="3.5" rx="1.1" fill="#254872"/>
+<circle cx="24" cy="24" r="14.2" fill="none" stroke="#12233D" stroke-width="1.4"/>
+<path d="M 30.75 15.45 A 10.5 10.5 0 1 0 34.43 25.95 L 24.45 25.95" fill="none" stroke="#F59E0B" stroke-width="3.6" stroke-linecap="round"/>
+<circle cx="31.9" cy="31.9" r="2" fill="#FBBF24"/>
+</svg>
