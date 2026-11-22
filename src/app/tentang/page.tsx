@@ -155,7 +155,7 @@ export default function TentangPage() {
                   "165 dokumen arsitektur kelembagaan — siap pakai, bukan teori",
                   "20 domain kepemimpinan terstruktur PGA-01 → PGA-165",
                   "3 metodologi proprietary: UMEA™ · G-DOS · UWA-7",
-                  "6 aset domain digital di atas satu infrastruktur bersama",
+                  "11 aset domain digital di atas satu infrastruktur bersama",
                 ].map((h) => (
                   <li key={h} className="flex items-start gap-2.5 text-sm leading-relaxed">
                     <BadgeCheck

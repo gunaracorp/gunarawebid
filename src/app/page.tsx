@@ -27,8 +27,8 @@ const PETA_SITUS = [
     href: "/ekosistem",
     icon: Landmark,
     judul: "Ekosistem",
-    desc: "Satu otak, banyak organ — peta kendali domain: digiman.id, GConsultant, MUHDIN Indonesia, Pusat Perizinan, dan lainnya.",
-    meta: "6 ASET DIGITAL",
+    desc: "Satu otak, sebelas organ — peta kendali domain: digiman.id, GConsultant, MUHDIN Indonesia, Pusat Perizinan, KopNusa, Arofah, PPP Digital, dan lainnya.",
+    meta: "11 ASET DIGITAL",
   },
   {
     href: "/tentang",
@@ -93,6 +93,27 @@ export default function Home() {
               <Map className="h-4 w-4 shrink-0 text-[var(--gn-amber-600)] dark:text-[var(--gn-amber-400)]" aria-hidden />
               DOKUMEN INTERNAL &amp; DETAIL IDENTITAS TIDAK DITERBITKAN DI SINI
             </p>
+          </Reveal>
+          <Reveal delay={0.18} className="mt-6">
+            <nav
+              aria-label="Dokumen legal dan bantuan"
+              className="flex flex-wrap items-center justify-center gap-2.5"
+            >
+              {[
+                { href: "/faq", label: "FAQ" },
+                { href: "/privacy", label: "Kebijakan Privasi" },
+                { href: "/terms", label: "Syarat & Ketentuan" },
+                { href: "/cookies", label: "Kebijakan Cookie" },
+              ].map((l) => (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  className="rounded-full border border-border bg-card px-4 py-2 text-xs font-semibold text-muted-foreground transition-colors hover:border-[var(--gn-amber-500)]/60 hover:text-foreground"
+                >
+                  {l.label}
+                </Link>
+              ))}
+            </nav>
           </Reveal>
         </div>
       </section>

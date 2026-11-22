@@ -5,12 +5,27 @@
 
 ## Status
 
-- **Versi saat ini:** `v1.0.0.1` (Day 1 selesai)
+- **Versi saat ini:** `v1.0.0.2` (Day 2 selesai)
 - **Fase aktif:** Fase 1 — Fondasi & Tata Kelola (Day 1–9)
-- **Progres:** 1/99 hari
+- **Progres:** 2/99 hari
 - **Protokol lanjutan:** buka sesi baru dengan `LANJUTKAN GUNARA-OS DAY-XX`
 
 ## Entri
+
+### #002 · Day 02 · Min 22 Nov 2026 · `v1.0.0.1 → v1.0.0.2`
+
+**Judul:** Lengkapi Situs Publik Standar Internasional — Legal, FAQ, Ekosistem 11 Aset
+
+**Hasil:**
+- Halaman legal standar internasional: `/privacy` (13 bagian — UU PDP 27/2022 + prinsip GDPR), `/terms` (15 bagian — penyelesaian sengketa bertahap: musyawarah → mediasi → arbitrase), `/cookies` (6 bagian + tabel inventaris cookie)
+- Halaman `/faq` — 10 Q&A + structured data FAQPage (JSON-LD)
+- `/ekosistem` dilengkapi 11 aset domain: kopnusa.id, topkonsultan.web.id, arofahajj.com, sertifikasi.arofahajj.com, pppdigital.id masuk peta kendali
+- Halaman kontak dilengkapi kanal resmi (email + telepon dari dokumen NIB) + kartu waspada penipuan
+- Footer: kolom Legal baru + versi v1.0.0.2; navigasi utama + FAQ
+- `sitemap.ts` (10 rute publik) + halaman 404 custom
+- Vault internal dipulihkan: `internal-vault/nib-data.json` + PDF NIB — kartu dokumen hidup kembali di `/internal/dokumen`
+
+**Pakar:** `E46` Design QA & Governance Lead · `L1` Legal & Compliance Architect
 
 ### #001 · Day 01 · Sab 21 Nov 2026 · `v1.0.0.0 → v1.0.0.1`
 

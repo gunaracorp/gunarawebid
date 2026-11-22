@@ -46,7 +46,7 @@ export function ContactCta() {
         </div>
 
         <p className="mt-8 font-mono text-[11px] leading-relaxed tracking-[0.14em] text-[#5c87b8]">
-          KANAL RESMI: GCONSULTANT.WEB.ID · DIGIMAN.ID · PUSATPERIZINAN.COM · MUHDIN.ID
+          KANAL RESMI: ADMIN@PUSATPERIZINAN.COM · 0812-3451-4669 · SEBELAS ASET DI /EKOSISTEM
         </p>
       </Reveal>
     </section>

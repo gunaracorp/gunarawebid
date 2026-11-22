@@ -19,7 +19,8 @@ const BOOT_LINES = [
   "[ OK ] sesi terautentikasi — selamat datang kembali, arsitek",
   "[ OK ] sistem identitas trilogi — RATIFIKASI DEWAN PAKAR 46",
   "[ OK ] vault dokumen — terpisah dari repo publik, disajikan via API gated",
-  "[ OK ] situs publik — 6 halaman aktif, area rahasia tidak ditautkan",
+  "[ OK ] situs publik — 10 halaman aktif + legal standar internasional",
+  "[ OK ] sitemap publik — 10 rute, robots menutup seluruh area rahasia",
 ];
 
 const PINTU = [
@@ -47,8 +48,8 @@ const PINTU = [
 ];
 
 const STATUS = [
-  { label: "Versi Sistem", nilai: "v1.0.0.1", note: "BASELINE · 21 NOV 2026" },
-  { label: "Situs Publik", nilai: "6 HAL.", note: "BERANDA → KONTAK" },
+  { label: "Versi Sistem", nilai: "v1.0.0.2", note: "GUNARA-OS · 22 NOV 2026" },
+  { label: "Situs Publik", nilai: "10 HAL.", note: "BERANDA → LEGAL" },
   { label: "Trilogi Logo", nilai: "3 ORGAN", note: "KUNCI PERMANEN" },
   { label: "Akses Internal", nilai: "AKTIF", note: "SESI 12 JAM" },
 ];

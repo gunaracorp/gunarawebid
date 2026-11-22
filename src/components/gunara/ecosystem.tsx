@@ -1,4 +1,4 @@
-import { ExternalLink, Landmark, BriefcaseBusiness, GaugeCircle, Globe, Radar, Store, BadgeCheck } from "lucide-react";
+import { ExternalLink, Landmark, BriefcaseBusiness, GaugeCircle, Globe, Radar, Store, BadgeCheck, Users, Building2, MoonStar, ScrollText, GraduationCap } from "lucide-react";
 import { SectionHeading } from "@/components/gunara/section-heading";
 import { Reveal } from "@/components/gunara/reveal";
 
@@ -69,6 +69,61 @@ const ECOSYSTEM = [
     icon: Radar,
     tag: "Aset Digital",
   },
+  {
+    href: "#ekosistem",
+    domain: "kopnusa.id",
+    nama: "KopNusa",
+    peran: "Koperasi Digital · Ekonomi Kelembagaan",
+    desc: "Kanal koperasi digital — arsitektur kelembagaan UMEA™ dibawa ke gerakan koperasi modern: struktur anggota, tata kelola, dan digitalisasi unit usaha.",
+    status: "Pembangunan",
+    statusTone: "wip" as const,
+    icon: Users,
+    tag: "Organisasi",
+  },
+  {
+    href: "#ekosistem",
+    domain: "topkonsultan.web.id",
+    nama: "Top Konsultan Internasional",
+    peran: "Badan Hukum · Konsultan Manajemen",
+    desc: "Payung badan hukum konsultansi manajemen lintas bidang — fondasi legal formal di mana seluruh jasa ekosistem diberdayakan.",
+    status: "Pembangunan",
+    statusTone: "wip" as const,
+    icon: Building2,
+    tag: "Jasa",
+  },
+  {
+    href: "#ekosistem",
+    domain: "arofahajj.com",
+    nama: "Arofah",
+    peran: "Layanan Haji & Umrah",
+    desc: "Perjalanan ibrah di atas satu standar digital — selaras dengan misi MUHDIN Indonesia: satu ekosistem, satu data, satu standar, satu trust.",
+    status: "Pembangunan",
+    statusTone: "wip" as const,
+    icon: MoonStar,
+    tag: "Layanan",
+  },
+  {
+    href: "#ekosistem",
+    domain: "sertifikasi.arofahajj.com",
+    nama: "Sertifikasi Arofah",
+    peran: "Sertifikasi Layanan Perjamaahan",
+    desc: "Kanal verifikasi dan sertifikasi bagi mitra jasa perjamaahan — memastikan mutu layanan tunduk pada satu standar yang dapat diuji.",
+    status: "Pembangunan",
+    statusTone: "wip" as const,
+    icon: ScrollText,
+    tag: "Layanan",
+  },
+  {
+    href: "#ekosistem",
+    domain: "pppdigital.id",
+    nama: "PPP Digital",
+    peran: "Pusat Pelatihan & Pengembangan Digital",
+    desc: "Kanal pendidikan dan sertifikasi SDM digital — laboratorium keterampilan di mana doktrin UMEA™ dan UWA-7 diajarkan sebagai kemampuan kerja nyata.",
+    status: "Pembangunan",
+    statusTone: "wip" as const,
+    icon: GraduationCap,
+    tag: "Edukasi",
+  },
 ];
 
 export function Ecosystem() {
@@ -82,8 +137,8 @@ export function Ecosystem() {
         <SectionHeading
           id="judul-ekosistem"
           kicker="Ekosistem · Peta Kendali"
-          title="Satu Otak, Banyak Organ"
-          description="gunara.web.id adalah pusat kendali. Setiap domain adalah organ dengan satu fungsi spesifik — dibangun di atas infrastruktur bersama, tanpa duplikasi."
+          title="Satu Otak, Sebelas Organ"
+          description="gunara.web.id adalah pusat kendali. Sebelas aset domain adalah organ dengan satu fungsi spesifik masing-masing — dibangun di atas infrastruktur bersama, tanpa duplikasi."
         />
 
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -165,8 +220,8 @@ export function Ecosystem() {
           <p className="mx-auto max-w-2xl rounded-2xl border border-dashed border-border bg-secondary/50 px-6 py-5 text-center text-sm leading-relaxed text-muted-foreground">
             Prinsip arsitektur ekosistem: <strong className="text-foreground">setiap domain satu
             identitas entitas</strong> — brand, konten, logika bisnis, dan SEO-nya sendiri — tetapi
-            berbagi satu infrastruktur yang sama. Bukan banyak website, melainkan satu peradaban
-            dengan banyak pintu.
+            berbagi satu infrastruktur yang sama. Sebelas organ di atas satu arsitektur — bukan
+            banyak website, melainkan satu peradaban dengan banyak pintu.
           </p>
         </Reveal>
       </div>

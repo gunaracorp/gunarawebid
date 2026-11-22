@@ -9,7 +9,7 @@ export async function GET() {
     service: "gunara.web.id",
     nama: "Gugun Gunara — Personal Command Center",
     status: "online",
-    versi: "1.0.0.1",
+    versi: "1.0.0.2",
     metodologi: ["UMEA", "G-DOS", "UWA-7"],
     prinsip: "Struktur sebelum karya · Sistem sebelum skala",
     waktu: new Date().toISOString(),
